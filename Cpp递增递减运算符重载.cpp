@@ -66,9 +66,9 @@ void forward_operator_test()
 {
 	Num1 num;
 	cout << "前置运算符测试:\n"; 
-	cout << "自增前 = " << num.m_num1;
-	++num.m_num1;
-	cout << "\t自增后 = " << num.m_num1 << endl;
+	cout << "自增前 = " << num;
+	++num;
+	cout << "\t自增后 = " << num<< endl;
 
 }
 
@@ -77,9 +77,9 @@ void rear_operator_teat()
 {
 		Num1 num;
 		cout << "后置运算符测试：\n";
-		cout << "递减前 =" << num.m_num1;
-		num.m_num1--;
-		cout << "\t递减后 = " << num.m_num1 << endl;
+		cout << "递减前 =" << num;
+		num--;
+		cout << "\t递减后 = " << num<< endl;
 }
 
 
