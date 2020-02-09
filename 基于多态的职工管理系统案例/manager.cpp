@@ -14,13 +14,14 @@ Manager::Manager(int id, string name, int dId)
 	m_DepId = dId;
 }
 
-void Manager::showInfo()
-{
-	cout << "职工编号：" << m_Id << "\t职工姓名：" << m_Name << "\t岗位：" << getDeptName()
-		<< "\t岗位职责：完成老板给的任务，并下发给员工。" << endl;
-}
-
 string Manager::getDeptName()
 {
 	return string("经理");
 }
+
+
+void Manager::showInfo()
+{
+	cout << "职工编号：" << m_Id << "\t职工姓名：" << m_Name << "\t岗位：" << getDeptName() << "\t岗位职责：完成老板给的任务，并下发给员工。" << endl;
+}
+

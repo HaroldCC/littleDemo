@@ -19,7 +19,7 @@ class Worker
 		int m_Id;              // 职工编号
 		string m_Name;         // 职工姓名
 		int m_DepId;           // 部门编号
-	public:
+
 		// 显示个人信息
 		virtual void showInfo() = 0;
 

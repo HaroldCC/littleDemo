@@ -107,7 +107,7 @@ void WorkManager::AddEmp()
 	else 
 		cout << "输入数据有误！" << endl;
 
-	// 按任意键清屏，回到上级目录；
+	// 按任意键清屏，回到上级目录
 	system("pause");
 	system("cls");
 }
