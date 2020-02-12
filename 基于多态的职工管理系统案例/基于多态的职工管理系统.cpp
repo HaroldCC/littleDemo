@@ -24,18 +24,25 @@ int main()
 		switch(choice)
 		{
 			case 0:              // 退出系统
+				wm.exitSystem();
+				break;
 			case 1:              // 增加职工
 			wm.AddEmp();
 				break;
 			case 2:               // 显示职工
+				wm.showEmp();
 				break;
 			case 3:                // 删除职工
+				wm.DelEmp();
 				break;
 			case 4:                // 修改职工
+				wm.ModEmp();
 				break;
 			case 5:                // 查找职工
+				wm.FindEmp();
 				break;
 			case 6:                 // 排序职工
+				wm.SortEmp();
 				break;
 			case 7:                  // 清空
 				break;

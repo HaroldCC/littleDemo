@@ -14,13 +14,13 @@ Employee::Employee(int id, string name, int dId)
 	m_DepId = dId;
 }
 
-void Employee::Worker::showInfo()
+void Employee::showInfo()
 {
 	cout << "职工编号：" << m_Id << "\t职工姓名：" << m_Name << "\t岗位：" << getDeptName()
 		<< "\t岗位职责: 完成经理交给的任务。" << endl;
 }
 
-string Employee::Worker::getDeptName()
+string Employee::getDeptName()
 {
 	return string("普通员工");
 }
