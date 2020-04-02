@@ -1,0 +1,16 @@
+# 二叉树与二叉搜索树继承结构
+
+## 二叉树
+* Binary Tree
+
+   + int size()
+   + bool isEmpty()
+   + void clear()
+   + 遍历、前序、后继......
+
+## 二叉搜索树
+* Binary Search Tree
+
+   + void add(e)
+   + void remove(e)
+   + bool contains(e)

@@ -1,0 +1,37 @@
+/*************************************************************************
+> File Name       : testDoublyCircleLinkedList.java
+> Author          : Harold
+> Mail            : 2106562095@qq.com
+> Github          : www.github.com/Haroldcc
+> Created Time    : 2020年03月01日  14时11分50秒
+************************************************************************/
+package j05双向循环链表;
+
+/**
+ * testDoublyCircleLinkedList
+ */
+public class testDoublyCircleLinkedList {
+
+    public static void main(String[] args) {
+        doublyCircleLinkedList<Integer> list = new doublyCircleLinkedList<>();
+
+        list.add(11);
+        list.add(22);
+        list.add(33);
+        list.add(44);
+        list.add(55);
+        list.add(66);
+
+        System.out.println(list);
+
+        list.add(0, 55);
+        list.add(4, 44);
+
+        System.out.println(list);
+
+        // list.remove(66);
+
+        list.remove(4);
+        System.out.println(list);
+    }
+}

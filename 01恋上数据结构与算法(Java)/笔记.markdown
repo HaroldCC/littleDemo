@@ -1,0 +1,11 @@
+## 常见复杂度对比
+*2020-01-14 星期五下午*
+
+* O(1) < O(logn) < O(nlogn) < O(n<sup>2</sup>) < O(n<sup>3</sup>) < O(2<sup>n</sup>) < O(n!) < O(n<sup>n</sup>)
+
+![Alt](https://s2.ax1x.com/2020/03/08/3xINa6.png)
+
+## 二叉树
+*2020-03-09 星期一下午*
+
+![Alt](https://s2.ax1x.com/2020/03/09/8pseFH.png)

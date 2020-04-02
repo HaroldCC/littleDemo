@@ -1,0 +1,4 @@
+Num Name DepartmentId
+1   张三    1
+Num Name DepartmentId
+3   李四    2
