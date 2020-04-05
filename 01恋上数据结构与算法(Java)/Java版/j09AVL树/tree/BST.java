@@ -134,7 +134,7 @@ public class BST<E> extends BinaryTree<E> {
         } else if (node.parent == null) {// node是叶子节点，并且是根节点
             root = null;
 
-            // 被删除的节点
+            // 删除节点之后的处理
             afterRemove(node);
         } else {// node是叶子节点，但不是根节点
             if (node == node.parent.left) {
@@ -143,7 +143,7 @@ public class BST<E> extends BinaryTree<E> {
                 node.parent.right = null;
             }
 
-            // 被删除的节点
+            // 删除节点之后的处理
             afterRemove(node);
         }
 

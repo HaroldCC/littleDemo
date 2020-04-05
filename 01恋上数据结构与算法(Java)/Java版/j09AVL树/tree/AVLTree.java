@@ -101,6 +101,7 @@ public class AVLTree<E> extends BST<E> {
      * 
      * @param node 高度最低的不平衡节点
      */
+    @SuppressWarnings("unused")
     private void rebalance2(Node<E> grand) {
         Node<E> parent = ((AVLNode<E>) grand).tallerChild();
         Node<E> node = ((AVLNode<E>) parent).tallerChild();
