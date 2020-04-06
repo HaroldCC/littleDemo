@@ -161,7 +161,18 @@ public class RedBlackTree<E> extends BBST<E> {
     }
 
     @Override
-    protected void afterRemove(Node<E> node) {
+    protected void afterRemove(Node<E> node, Node<E> replacement) {
+        // 如果删除的节点是红色
+        if (isRed(node))
+            return;
+
+        // 用以取代node的子节点是红色
+        if (isRed(replacement)) {
+            black(replacement);
+            return;
+        }
+
+        // 删除的是黑色叶子节点
 
     }
 
