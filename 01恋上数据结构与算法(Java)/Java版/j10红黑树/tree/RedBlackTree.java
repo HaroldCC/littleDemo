@@ -105,7 +105,7 @@ public class RedBlackTree<E> extends BBST<E> {
     protected void afterAdd(Node<E> node) {
         Node<E> parent = node.parent;
 
-        // 添加的是根节点
+        // 添加的是根节点 或者 上溢到达了根节点
         if (parent == null) {
             black(node);
             return;
@@ -118,18 +118,21 @@ public class RedBlackTree<E> extends BBST<E> {
         // 叔父节点
         Node<E> uncle = parent.sibling();
         // 祖父节点
-        Node<E> grand = parent.parent;
-        if (isRed(uncle)) { // 叔父节点是红色 (上溢-LL-RR-LR-RL)
+        Node<E> grand = red(parent.parent);
+
+        // 叔父节点是红色 (上溢-LL-RR-LR-RL)
+        if (isRed(uncle)) {
             black(parent);
             black(uncle);
             // 把祖父节点当作是新添加的节点
-            afterAdd(red(grand));
+            // afterAdd(red(grand));
+            afterAdd(grand);
             return;
         }
 
         // 叔父节点不是红色
         if (parent.isLeftChild()) { // L
-            red(grand);
+            // red(grand);
             if (node.isLeftChild()) { // LL
                 black(parent);
                 // red(grand);
@@ -142,7 +145,7 @@ public class RedBlackTree<E> extends BBST<E> {
             }
             rotateRight(grand);
         } else { // R
-            red(grand);
+            // red(grand);
             if (node.isLeftChild()) { // RL
                 black(node);
                 // red(grand);
