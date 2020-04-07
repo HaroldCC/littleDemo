@@ -161,19 +161,173 @@ public class RedBlackTree<E> extends BBST<E> {
     }
 
     @Override
-    protected void afterRemove(Node<E> node, Node<E> replacement) {
+    /**
+     * 无replacement参数（1个参数版本）
+     */
+    protected void afterRemove(Node<E> node) {
         // 如果删除的节点是红色
-        if (isRed(node))
-            return;
-
-        // 用以取代node的子节点是红色
-        if (isRed(replacement)) {
-            black(replacement);
+        // 或者 用以取代删除的子节点是红色
+        if (isRed(node)) {
+            black(node);
             return;
         }
 
-        // 删除的是黑色叶子节点
+        Node<E> parent = node.parent;
 
+        // 删除的是根节点
+        if (parent == null)
+            return;
+
+        // 删除的是黑色叶子节点【下溢】
+        // 实际被删除的node是左还是右
+        boolean left = parent.left == null || node.isLeftChild();
+        Node<E> sibling = left ? parent.right : parent.left;
+        if (left) { // 被删除的节点在左边，兄弟节点在右边
+            if (isRed(sibling)) { // 兄弟节点是红色
+                black(sibling);
+                red(parent);
+                rotateLeft(parent);
+                // 更换兄弟
+                sibling = parent.right;
+            }
+
+            // 兄弟节点必然是黑色
+            if (isBlack(sibling.left) && isBlack(sibling.right)) {
+                // 兄弟节点没有1个红色子节点，父节点要向下跟兄弟节点合并
+                boolean isParentBlack = isBlack(parent);
+                black(parent);
+                red(sibling);
+                if (isParentBlack) {
+                    afterRemove(parent);
+                }
+            } else { // 兄弟节点至少有1个红色子节点，向兄弟节点借元素
+                if (isBlack(sibling.right)) {
+                    // 兄弟节点的左边是黑色，兄弟要先左旋转
+                    rotateRight(sibling);
+                    sibling = parent.right;
+                }
+
+                color(sibling, colorOf(parent));
+                black(sibling.right);
+                rotateLeft(parent);
+            }
+        } else { // 被删除的节点在右边，兄弟节点在左边
+
+            if (isRed(sibling)) { // 兄弟节点是红色
+                black(sibling);
+                red(parent);
+                rotateRight(parent);
+                // 更换兄弟
+                sibling = parent.left;
+            }
+
+            // 兄弟节点必然是黑色
+            if (isBlack(sibling.left) && isBlack(sibling.right)) {
+                // 兄弟节点没有1个红色子节点，父节点要向下跟兄弟节点合并
+                boolean isParentBlack = isBlack(parent);
+                black(parent);
+                red(sibling);
+                if (isParentBlack) {
+                    afterRemove(parent);
+                }
+            } else { // 兄弟节点至少有1个红色子节点，向兄弟节点借元素
+                if (isBlack(sibling.left)) {
+                    // 兄弟节点的左边是黑色，兄弟要先左旋转
+                    rotateLeft(sibling);
+                    sibling = parent.left;
+                }
+
+                color(sibling, colorOf(parent));
+                black(sibling.left);
+                rotateRight(parent);
+            }
+        }
     }
+
+    /**
+     * 有replacement参数版本（2个参数）
+     */
+    // protected void afterRemove(Node<E> node, Node<E> replacement) {
+    // // 如果删除的节点是红色
+    // if (isRed(node))
+    // return;
+
+    // // 用以取代node的子节点是红色
+    // if (isRed(replacement)) {
+    // black(replacement);
+    // return;
+    // }
+
+    // Node<E> parent = node.parent;
+
+    // // 删除的是根节点
+    // if (parent == null)
+    // return;
+
+    // // 删除的是黑色叶子节点【下溢】
+    // // 实际被删除的node是左还是右
+    // boolean left = parent.left == null || node.isLeftChild();
+    // Node<E> sibling = left ? parent.right : parent.left;
+    // if (left) { // 被删除的节点在左边，兄弟节点在右边
+    // if (isRed(sibling)) { // 兄弟节点是红色
+    // black(sibling);
+    // red(parent);
+    // rotateLeft(parent);
+    // // 更换兄弟
+    // sibling = parent.right;
+    // }
+
+    // // 兄弟节点必然是黑色
+    // if (isBlack(sibling.left) && isBlack(sibling.right)) {
+    // // 兄弟节点没有1个红色子节点，父节点要向下跟兄弟节点合并
+    // boolean isParentBlack = isBlack(parent);
+    // black(parent);
+    // red(sibling);
+    // if (isParentBlack) {
+    // afterRemove(parent, null);
+    // }
+    // } else { // 兄弟节点至少有1个红色子节点，向兄弟节点借元素
+    // if (isBlack(sibling.right)) {
+    // // 兄弟节点的左边是黑色，兄弟要先左旋转
+    // rotateRight(sibling);
+    // sibling = parent.right;
+    // }
+
+    // color(sibling, colorOf(parent));
+    // black(sibling.right);
+    // rotateLeft(parent);
+    // }
+    // } else { // 被删除的节点在右边，兄弟节点在左边
+
+    // if (isRed(sibling)) { // 兄弟节点是红色
+    // black(sibling);
+    // red(parent);
+    // rotateRight(parent);
+    // // 更换兄弟
+    // sibling = parent.left;
+    // }
+
+    // // 兄弟节点必然是黑色
+    // if (isBlack(sibling.left) && isBlack(sibling.right)) {
+    // // 兄弟节点没有1个红色子节点，父节点要向下跟兄弟节点合并
+    // boolean isParentBlack = isBlack(parent);
+    // black(parent);
+    // red(sibling);
+    // if (isParentBlack) {
+    // afterRemove(parent, null);
+    // }
+    // } else { // 兄弟节点至少有1个红色子节点，向兄弟节点借元素
+    // if (isBlack(sibling.left)) {
+    // // 兄弟节点的左边是黑色，兄弟要先左旋转
+    // rotateLeft(sibling);
+    // sibling = parent.left;
+    // }
+
+    // color(sibling, colorOf(parent));
+    // black(sibling.left);
+    // rotateRight(parent);
+    // }
+    // }
+    // }
 
 }

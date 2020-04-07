@@ -31,7 +31,28 @@ public class testRBTree {
 
     }
 
+    static void test2() {
+        Integer data[] = new Integer[] { //
+                55, 87, 56, 74, 96, 22, 62, 20, 70, 68, 90, 50 };
+
+        RedBlackTree<Integer> rbTree = new RedBlackTree<>();
+        for (int i = 0; i < data.length; i++) {
+            rbTree.add(data[i]);
+        }
+
+        BinaryTrees.println(rbTree);
+
+        for (int i = 0; i < data.length; i++) {
+            rbTree.remove(data[i]);
+            System.out.println("【" + data[i] + "】");
+            BinaryTrees.println(rbTree);
+            System.out.println("----------------------------------");
+        }
+
+    }
+
     public static void main(String[] args) {
         test1();
+        test2();
     }
 }
