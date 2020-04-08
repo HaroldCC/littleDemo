@@ -10,6 +10,7 @@ package j11集合.set;
 
 import j11集合.tree.BinaryTree;
 import j11集合.tree.RedBlackTree;
+import java.util.Comparator;
 
 /**
  * 使用红黑树实现集合
@@ -18,6 +19,19 @@ import j11集合.tree.RedBlackTree;
  */
 public class rbTreeSet<E> implements Set<E> {
     private RedBlackTree<E> tree = new RedBlackTree<>();
+
+    public rbTreeSet() {
+        this(null);
+    }
+
+    /**
+     * 红黑树实现的集合里面的元素必须具备可比较性
+     * 
+     * @param comparator
+     */
+    public rbTreeSet(Comparator<E> comparator) {
+        tree = new RedBlackTree<>(comparator);
+    }
 
     @Override
     public int size() {
