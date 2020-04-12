@@ -3,19 +3,19 @@
 > Author          : Harold
 > Mail            : 2106562095@qq.com
 > Github          : www.github.com/Haroldcc
-> Created Time    : 2020å¹´03æœˆ31æ—¥  15æ—¶04åˆ†15ç§’
+> Created Time    : 2020Äê03ÔÂ31ÈÕ  15Ê±04·Ö15Ãë
 ************************************************************************/
 
-/***** ä½¿ç”¨listå®ç°çš„æ ˆå’Œé˜Ÿåˆ—ä¸stlé»˜è®¤ä½¿ç”¨çš„dequeå®ç°çš„æ ˆå’Œé˜Ÿåˆ—é€Ÿåº¦æ¯”è¾ƒ *****/
+/***** Ê¹ÓÃlistÊµÏÖµÄÕ»ºÍ¶ÓÁĞÓëstlÄ¬ÈÏÊ¹ÓÃµÄdequeÊµÏÖµÄÕ»ºÍ¶ÓÁĞËÙ¶È±È½Ï *****/
 #include <iostream>
 #include <list>
 #include <stack>
 #include <queue>
 #include <string>
 
-#define TEST_NUM 10000 // æµ‹è¯•èµ‹å€¼çš„æ¬¡æ•°
+#define TEST_NUM 10000 // ²âÊÔ¸³ÖµµÄ´ÎÊı
 
-// æ—¶é—´æµ‹é‡å·¥å…·ç±»
+// Ê±¼ä²âÁ¿¹¤¾ßÀà
 #include <memory>
 #include <chrono>
 
@@ -52,10 +52,10 @@ void test_listStack()
 {
     Timer timer;
     std::stack<std::string, std::list<std::string>> str;
-    char buf[TEST_NUM];
+    char buf[10];
     for (long i = 0; i < TEST_NUM; i++)
     {
-        snprintf(buf, TEST_NUM, "%d", rand());
+        snprintf(buf, 10, "%d", rand());
         str.push(std::string(buf));
     }
     std::cout << "listStack.size() = " << str.size() << std::endl;
@@ -69,10 +69,10 @@ void test_stack()
 {
     Timer timer;
     std::stack<std::string> str;
-    char buf[TEST_NUM];
+    char buf[10];
     for (long i = 0; i < TEST_NUM; i++)
     {
-        snprintf(buf, TEST_NUM, "%d", rand());
+        snprintf(buf, 10, "%d", rand());
         str.push(std::string(buf));
     }
     std::cout << "Stack.size() = " << str.size() << std::endl;
@@ -86,10 +86,10 @@ void test_listQueue()
 {
     Timer timer;
     std::queue<std::string, std::list<std::string>> str;
-    char buf[TEST_NUM];
+    char buf[10];
     for (long i = 0; i < TEST_NUM; i++)
     {
-        snprintf(buf, TEST_NUM, "%d", rand());
+        snprintf(buf, 10, "%d", rand());
         str.push(std::string(buf));
     }
     std::cout << "listQueue.size() = " << str.size() << std::endl;
@@ -105,10 +105,10 @@ void test_queue()
 {
     Timer timer;
     std::queue<std::string> str;
-    char buf[TEST_NUM];
+    char buf[10];
     for (long i = 0; i < TEST_NUM; i++)
     {
-        snprintf(buf, TEST_NUM, "%d", rand());
+        snprintf(buf, 10, "%d", rand());
         str.push(std::string(buf));
     }
     std::cout << "Queue.size() = " << str.size() << std::endl;
@@ -122,19 +122,19 @@ void test_queue()
 
 int main()
 {
-    std::cout << "æµ‹è¯•listStack......\n";
+    std::cout << "²âÊÔlistStack......\n";
     test_listStack();
     std::cout << std::endl;
 
-    std::cout << "æµ‹è¯•STLstack......\n";
+    std::cout << "²âÊÔSTLstack......\n";
     test_stack();
     std::cout << std::endl;
 
-    std::cout << "æµ‹è¯•listQueue......\n";
+    std::cout << "²âÊÔlistQueue......\n";
     test_listQueue();
     std::cout << std::endl;
 
-    std::cout << "æµ‹è¯•STLqueue......\n";
+    std::cout << "²âÊÔSTLqueue......\n";
     test_queue();
     std::cout << std::endl;
 

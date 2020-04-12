@@ -12,6 +12,9 @@ import java.util.LinkedList;
 import java.util.Objects;
 import java.util.Queue;
 
+import j13哈希表.printer.BinaryTreeInfo;
+import j13哈希表.printer.BinaryTrees;
+
 @SuppressWarnings({ "unchecked", "unused", "rawtypes" })
 /**
  * 使用哈希表实现映射
@@ -622,4 +625,38 @@ public class HashMap<K, V> implements Map<K, V> {
         grand.parent = parent;
     }
 
+    public void print() {
+        if (size == 0)
+            return;
+        for (int i = 0; i < table.length; i++) {
+            final Node<K, V> root = table[i];
+            BinaryTrees.println(new BinaryTreeInfo() {
+
+                @Override
+                public Object root() {
+                    // TODO Auto-generated method stub
+                    return null;
+                }
+
+                @Override
+                public Object left(Object node) {
+                    // TODO Auto-generated method stub
+                    return null;
+                }
+
+                @Override
+                public Object right(Object node) {
+                    // TODO Auto-generated method stub
+                    return null;
+                }
+
+                @Override
+                public Object string(Object node) {
+                    // TODO Auto-generated method stub
+                    return null;
+                }
+
+            });
+        }
+    }
 }
