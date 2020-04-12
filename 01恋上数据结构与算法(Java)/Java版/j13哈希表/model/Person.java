@@ -1,4 +1,4 @@
-package j13哈希表;
+package j13哈希表.model;
 
 public class Person /* implements Comparable<Person> */ {
 	private int age; // 10 20
