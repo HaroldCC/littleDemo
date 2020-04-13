@@ -36,7 +36,7 @@ public class testHashMap {
     }
 
     static void test1() {
-        String filepath = "D:\\Java\\java-1.8.0-openjdk-1.8.0.242-3.b08.redhat.windows.x86_64\\src\\java\\util\\concurrent";
+        String filepath = "D:\\Java\\java-1.8.0-openjdk-1.8.0.242-3.b08.redhat.windows.x86_64\\src\\java\\util";
         FileInfo fileInfo = Files.read(filepath, null);
         String[] words = fileInfo.words();
 

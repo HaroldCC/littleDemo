@@ -27,6 +27,8 @@ public class HashMap<K, V> implements Map<K, V> {
     private Node<K, V>[] table; // 哈希表(索引值 + 红黑树的根节点)
     private static final int DEFAULT_CAPACITY = 1 << 4; // 16
 
+    private static final float DEFAULT_LOAD_FACTOR = 0.75f; // 装填因子
+
     public HashMap() {
         table = new Node[DEFAULT_CAPACITY];
     }
@@ -173,8 +175,101 @@ public class HashMap<K, V> implements Map<K, V> {
     // System.identityHashCode(k2); // 使用内存地址生成哈希值进行比较
     // }
 
+    private void resize() {
+        // 装填因子 <= 0.75
+        if (size / table.length <= DEFAULT_LOAD_FACTOR)
+            return;
+
+        Node<K, V>[] oldTable = table;
+        table = new Node[table.length << 1]; // 扩容为原来的2倍
+
+        Queue<Node<K, V>> queue = new LinkedList<>();
+        for (int i = 0; i < oldTable.length; i++) {
+            if (oldTable[i] == null)
+                continue;
+            queue.offer(oldTable[i]);
+            while (!queue.isEmpty()) {
+                Node<K, V> node = queue.poll();
+
+                if (node.left != null) {
+                    queue.offer(node.left);
+                }
+
+                if (node.right != null) {
+                    queue.offer(node.right);
+                }
+                // 挪动代码要放最后
+                moveNode(node);
+            }
+        }
+    }
+
+    private void moveNode(Node<K, V> newNode) {
+        // 重置
+        newNode.parent = null;
+        newNode.right = null;
+        newNode.left = null;
+        newNode.color = RED;
+
+        int index = index(newNode);
+        // 取出index位置的红黑树根节点
+        Node<K, V> root = table[index];
+        if (root == null) {
+            root = newNode;
+            table[index] = root;
+
+            afterPut(root);
+
+            return;
+        }
+
+        // 添加新的节点到红黑树
+        Node<K, V> parent = root;
+        Node<K, V> node = root;
+        int cmp = 0;
+        K k1 = newNode.key;
+        int h1 = newNode.hash; // key的哈希值
+        do {
+            parent = node;
+            K k2 = node.key;
+            int h2 = node.hash;
+            if (h1 > h2) {
+                cmp = 1;
+            } else if (h1 < h2) {
+                cmp = -1;
+            } else if (k1 != null && k2 != null //
+                    && k1 instanceof Comparable //
+                    && k1.getClass() == k2.getClass() //
+                    && (cmp = ((Comparable) k1).compareTo(k2)) != 0) {
+
+            } else {
+                cmp = System.identityHashCode(k1) - System.identityHashCode(k2);
+            }
+
+            if (cmp > 0) {
+                node = node.right;
+            } else if (cmp < 0) {
+                node = node.left;
+            }
+        } while (node != null);
+
+        // 看看插入到父节点的哪个位置
+        newNode.parent = parent;
+        if (cmp > 0) {
+            parent.right = newNode;
+        } else {
+            parent.left = newNode;
+        }
+
+        // 新添加节点之后的处理
+        afterPut(newNode);
+
+    }
+
     @Override
     public V put(K key, V value) {
+        resize();
+
         int index = index(key);
         // 取出index位置的红黑树根节点
         Node<K, V> root = table[index];
@@ -206,8 +301,12 @@ public class HashMap<K, V> implements Map<K, V> {
                 cmp = -1;
             } else if (Objects.equals(k1, k2)) {
                 cmp = 0;
+            } else if (k1 != null && k2 != null //
+                    && k1 instanceof Comparable //
+                    && k1.getClass() == k2.getClass() //
+                    && (cmp = ((Comparable) k1).compareTo(k2)) != 0) {
             } else if (searched) { // 已经扫描了
-                cmp = 1;
+                cmp = System.identityHashCode(k1) - System.identityHashCode(k2);
             } else { // searched 为 false，还未扫描，然后再根据内存地址大小决定左右
                 if ((node.left != null //
                         && (result = node(node.left, k1)) != null)
@@ -218,7 +317,7 @@ public class HashMap<K, V> implements Map<K, V> {
                     cmp = 0;
                 } else { // 不存在这个key
                     searched = true;
-                    cmp = 1;
+                    cmp = System.identityHashCode(k1) - System.identityHashCode(k2);
                 }
             }
 
@@ -328,6 +427,11 @@ public class HashMap<K, V> implements Map<K, V> {
                 node = node.left;
             } else if (Objects.equals(k1, k2)) {
                 return node;
+            } else if (k1 != null && k2 != null //
+                    && k1 instanceof Comparable //
+                    && k1.getClass() == k2.getClass() //
+                    && (cmp = ((Comparable) k1).compareTo(k2)) != 0) {
+                node = cmp > 0 ? node.right : node.left;
             } else if (node.right != null //
                     && (result = node(node.right, k1)) != null) {
                 return result;
