@@ -402,6 +402,7 @@ public class HashMap<K, V> implements Map<K, V> {
             // 用后继节点的值覆盖度为2的节点的值
             node.key = s.key;
             node.value = s.value;
+            node.hash = s.hash;
             // 删除后继节点
             node = s;
         }
