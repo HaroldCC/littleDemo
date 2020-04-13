@@ -4,10 +4,8 @@ import j13哈希表.Times.Task;
 import j13哈希表.file.FileInfo;
 import j13哈希表.file.Files;
 import j13哈希表.map.HashMap;
-//import j13哈希表.map.LinkedHashMap;
 import j13哈希表.map.Map;
 import j13哈希表.map.Map.Visitor;
-//import j13哈希表.map.TreeMap;
 import j13哈希表.model.Key;
 import j13哈希表.model.SubKey1;
 import j13哈希表.model.SubKey2;
@@ -38,7 +36,7 @@ public class testHashMap {
     }
 
     static void test1() {
-        String filepath = "D:\\Java\\java-1.8.0-openjdk-1.8.0.242-3.b08.redhat.windows.x86_64\\src\\java\\util";
+        String filepath = "D:\\Java\\java-1.8.0-openjdk-1.8.0.242-3.b08.redhat.windows.x86_64\\src\\java\\util\\concurrent";
         FileInfo fileInfo = Files.read(filepath, null);
         String[] words = fileInfo.words();
 
@@ -147,10 +145,11 @@ public class testHashMap {
         Asserts.test(map.get(new SubKey1(1)) == 5);
         Asserts.test(map.get(new SubKey2(1)) == 5);
         Asserts.test(map.size() == 20);
+        // map.print();
     }
 
     public static void main(String[] args) {
-        // test1();
+        test1();
         test2(new HashMap<>());
         test3(new HashMap<>());
         test4(new HashMap<>());

@@ -6,6 +6,8 @@
 > Created Time    : 2020年04月10日  12时47分38秒
 ************************************************************************/
 
+//! 精简之前的代码
+
 package j13哈希表.map;
 
 import java.util.LinkedList;
@@ -15,19 +17,19 @@ import java.util.Queue;
 import j13哈希表.printer.BinaryTreeInfo;
 import j13哈希表.printer.BinaryTrees;
 
-@SuppressWarnings({ "unchecked", "unused" })
+@SuppressWarnings({ "unchecked", "unused", "rawtypes" })
 /**
  * 使用哈希表实现映射
  * 
  * @param <K>
  * @param <V>
  */
-public class HashMap<K, V> implements Map<K, V> {
+public class HashMapV0<K, V> implements Map<K, V> {
     private int size; // 哈希表数组的size
     private Node<K, V>[] table; // 哈希表(索引值 + 红黑树的根节点)
     private static final int DEFAULT_CAPACITY = 1 << 4; // 16
 
-    public HashMap() {
+    public HashMapV0() {
         table = new Node[DEFAULT_CAPACITY];
     }
 
@@ -55,6 +57,10 @@ public class HashMap<K, V> implements Map<K, V> {
             this.hash = key == null ? 0 : key.hashCode();
             this.value = value;
             this.parent = parent;
+        }
+
+        public boolean isLeaf() {
+            return left == null && right == null;
         }
 
         public boolean hasTwoChildren() {
@@ -195,14 +201,21 @@ public class HashMap<K, V> implements Map<K, V> {
             parent = node;
             K k2 = node.key;
             int h2 = node.hash;
+            // ! 这里代码可以进行简化（可见HashMap.java)
             if (h1 > h2) {
                 cmp = 1;
             } else if (h1 < h2) {
                 cmp = -1;
             } else if (Objects.equals(k1, k2)) {
                 cmp = 0;
+            } else if (k1 != null && k2 != null //
+                    && k1.getClass() == k2.getClass() //
+                    && k1 instanceof Comparable //
+                    && (cmp = ((Comparable) k1).compareTo(k2)) != 0) {
+
             } else if (searched) { // 已经扫描了
-                cmp = 1;
+                cmp = System.identityHashCode(k1) //
+                        - System.identityHashCode(k2);
             } else { // searched 为 false，还未扫描，然后再根据内存地址大小决定左右
                 if ((node.left != null //
                         && (result = node(node.left, k1)) != null)
@@ -213,7 +226,8 @@ public class HashMap<K, V> implements Map<K, V> {
                     cmp = 0;
                 } else { // 不存在这个key
                     searched = true;
-                    cmp = 1;
+                    cmp = System.identityHashCode(k1) //
+                            - System.identityHashCode(k2);
                 }
             }
 
@@ -323,6 +337,11 @@ public class HashMap<K, V> implements Map<K, V> {
                 node = node.left;
             } else if (Objects.equals(k1, k2)) {
                 return node;
+            } else if (k1 != null && k2 != null //
+                    && k1.getClass() == k2.getClass() //
+                    && k1 instanceof Comparable //
+                    && (cmp = ((Comparable) k1).compareTo(k2)) != 0) {
+                node = cmp > 0 ? node.right : node.left;
             } else if (node.right != null //
                     && (result = node(node.right, k1)) != null) {
                 return result;
@@ -404,7 +423,7 @@ public class HashMap<K, V> implements Map<K, V> {
                 table[index] = replacement;
             } else if (node == node.parent.left) {
                 node.parent.left = replacement;
-            } else { // node == node.parent.right
+            } else if (node == node.parent.right) {
                 node.parent.right = replacement;
             }
 
@@ -412,6 +431,9 @@ public class HashMap<K, V> implements Map<K, V> {
             afterRemove(replacement);
         } else if (node.parent == null) {// node是叶子节点，并且是根节点
             table[index] = null;
+
+            // 删除节点之后的处理
+            afterRemove(node);
         } else {// node是叶子节点，但不是根节点
             if (node == node.parent.left) {
                 node.parent.left = null;
@@ -475,7 +497,6 @@ public class HashMap<K, V> implements Map<K, V> {
 
                 color(sibling, colorOf(parent));
                 black(sibling.right);
-                black(parent);
                 rotateLeft(parent);
             }
         } else { // 被删除的节点在右边，兄弟节点在左边
@@ -506,7 +527,6 @@ public class HashMap<K, V> implements Map<K, V> {
 
                 color(sibling, colorOf(parent));
                 black(sibling.left);
-                black(parent);
                 rotateRight(parent);
             }
         }
@@ -551,7 +571,6 @@ public class HashMap<K, V> implements Map<K, V> {
         for (int i = 0; i < table.length; i++) {
             if (table[i] == null)
                 continue;
-
             queue.offer(table[i]);
             while (!queue.isEmpty()) {
                 Node<K, V> node = queue.poll();

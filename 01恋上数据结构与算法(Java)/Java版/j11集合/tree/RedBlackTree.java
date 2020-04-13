@@ -209,6 +209,7 @@ public class RedBlackTree<E> extends BBST<E> {
 
                 color(sibling, colorOf(parent));
                 black(sibling.right);
+                black(parent);
                 rotateLeft(parent);
             }
         } else { // 被删除的节点在右边，兄弟节点在左边
@@ -239,6 +240,7 @@ public class RedBlackTree<E> extends BBST<E> {
 
                 color(sibling, colorOf(parent));
                 black(sibling.left);
+                black(parent);
                 rotateRight(parent);
             }
         }
