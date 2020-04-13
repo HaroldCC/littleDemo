@@ -129,12 +129,12 @@ public class testHashMap {
         Asserts.test(map.get(new Key(6)) == null);
         Asserts.test(map.get(new Key(7)) == null);
         Asserts.test(map.get(new Key(8)) == 8);
-        // map.traversal(new Visitor<Object, Integer>() {
-        // public boolean visit(Object key, Integer value) {
-        // System.out.println(key + "_" + value);
-        // return false;
-        // }
-        // });
+        map.traversal(new Visitor<Object, Integer>() {
+            public boolean visit(Object key, Integer value) {
+                System.out.println(key + "_" + value);
+                return false;
+            }
+        });
     }
 
     static void test5(HashMap<Object, Integer> map) {

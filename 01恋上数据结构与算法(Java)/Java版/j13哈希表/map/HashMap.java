@@ -52,7 +52,8 @@ public class HashMap<K, V> implements Map<K, V> {
 
         public Node(K key, V value, Node<K, V> parent) {
             this.key = key;
-            this.hash = key == null ? 0 : key.hashCode();
+            int hash = key == null ? 0 : key.hashCode();
+            this.hash = hash ^ (hash >>> 16);
             this.value = value;
             this.parent = parent;
         }
@@ -119,16 +120,20 @@ public class HashMap<K, V> implements Map<K, V> {
      * @return 在桶数组中的位置
      */
     private int index(K key) {
+        return hash(key) & (table.length - 1);
+    }
+
+    private int hash(K key) {
         if (key == null)
             return 0;
-        int hash = key.hashCode();
         // 将获取到的哈希值高低16位再次混合运算，
         // 然后与桶数组进行异或操作，获取位置
-        return (hash ^ (hash >>> 16)) & (table.length - 1);
+        int hash = key.hashCode();
+        return hash ^ (hash >>> 16);
     }
 
     private int index(Node<K, V> node) {
-        return (node.hash ^ (node.hash >>> 16)) & (table.length - 1);
+        return node.hash & (table.length - 1);
     }
 
     /**
@@ -188,7 +193,7 @@ public class HashMap<K, V> implements Map<K, V> {
         Node<K, V> node = root;
         int cmp = 0;
         K k1 = key;
-        int h1 = k1 == null ? 0 : k1.hashCode(); // key的哈希值
+        int h1 = hash(k1); // key的哈希值
         Node<K, V> result = null;
         boolean searched = false; // 是否已经搜索过这个key
         do {
@@ -309,7 +314,7 @@ public class HashMap<K, V> implements Map<K, V> {
     }
 
     private Node<K, V> node(Node<K, V> node, K k1) {
-        int h1 = k1 == null ? 0 : k1.hashCode();
+        int h1 = hash(k1);
         // 存储查找结果
         Node<K, V> result = null;
         int cmp = 0;
