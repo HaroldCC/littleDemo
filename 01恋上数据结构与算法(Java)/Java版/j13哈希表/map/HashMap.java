@@ -25,7 +25,6 @@ import j13哈希表.printer.BinaryTrees;
 public class HashMap<K, V> implements Map<K, V> {
     private int size; // 哈希表数组的size
     private Node<K, V>[] table; // 哈希表(索引值 + 红黑树的根节点)
-
     private static final int DEFAULT_CAPACITY = 1 << 4; // 16
 
     public HashMap() {
@@ -216,7 +215,7 @@ public class HashMap<K, V> implements Map<K, V> {
                         - System.identityHashCode(k2);
             } else { // searched 为 false，还未扫描，然后再根据内存地址大小决定左右
                 if ((node.left != null //
-                        && (result = node(node.right, k1)) != null)
+                        && (result = node(node.left, k1)) != null)
                         || (node.right != null //
                                 && (result = node(node.right, k1)) != null)) {
                     // 已经存在这个key
@@ -237,6 +236,7 @@ public class HashMap<K, V> implements Map<K, V> {
                 V oldValue = node.value;
                 node.key = key;
                 node.value = value;
+                node.hash = h1;
                 return oldValue;
             }
         } while (node != null);
