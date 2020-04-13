@@ -208,8 +208,9 @@ public class HashMap<K, V> implements Map<K, V> {
                 cmp = 0;
             } else if (k1 != null && k2 != null //
                     && k1.getClass() == k2.getClass() //
-                    && k1 instanceof Comparable) {
-                cmp = ((Comparable) k1).compareTo(k2);
+                    && k1 instanceof Comparable //
+                    && (cmp = ((Comparable) k1).compareTo(k2)) != 0) {
+
             } else if (searched) { // 已经扫描了
                 cmp = System.identityHashCode(k1) //
                         - System.identityHashCode(k2);
@@ -322,6 +323,7 @@ public class HashMap<K, V> implements Map<K, V> {
         int h1 = k1 == null ? 0 : k1.hashCode();
         // 存储查找结果
         Node<K, V> result = null;
+        int cmp = 0;
         while (node != null) {
             K k2 = node.key;
             int h2 = node.hash;
@@ -334,15 +336,9 @@ public class HashMap<K, V> implements Map<K, V> {
                 return node;
             } else if (k1 != null && k2 != null //
                     && k1.getClass() == k2.getClass() //
-                    && k1 instanceof Comparable) {
-                int cmp = ((Comparable) k1).compareTo(k2);
-                if (cmp > 0) {
-                    node = node.right;
-                } else if (cmp < 0) {
-                    node = node.left;
-                } else {
-                    return node;
-                }
+                    && k1 instanceof Comparable //
+                    && (cmp = ((Comparable) k1).compareTo(k2)) != 0) {
+                node = cmp > 0 ? node.right : node.left;
             } else if (node.right != null //
                     && (result = node(node.right, k1)) != null) {
                 return result;
