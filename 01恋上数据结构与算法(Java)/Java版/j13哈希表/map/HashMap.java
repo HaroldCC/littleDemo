@@ -15,7 +15,7 @@ import java.util.Queue;
 import j13哈希表.printer.BinaryTreeInfo;
 import j13哈希表.printer.BinaryTrees;
 
-@SuppressWarnings({ "unchecked", "unused" })
+@SuppressWarnings({ "unchecked", "rawtypes" })
 /**
  * 使用哈希表实现映射
  * 

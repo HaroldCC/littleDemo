@@ -5,6 +5,7 @@ import j13哈希表.file.FileInfo;
 import j13哈希表.file.Files;
 import j13哈希表.map.HashMap;
 import j13哈希表.map.Map;
+import j13哈希表.map.rbTreeMap;
 import j13哈希表.map.Map.Visitor;
 import j13哈希表.model.Key;
 import j13哈希表.model.SubKey1;
@@ -44,27 +45,9 @@ public class testHashMap {
         System.out.println("单词总数：" + words.length);
         System.out.println("-------------------------------------");
 
-        HashMap<String, Integer> map = new HashMap<>();
-        Times.test(map.getClass().getName(), new Task() {
-            @Override
-            public void execute() {
-                for (String word : words) {
-                    Integer count = map.get(word);
-                    count = count == null ? 0 : count;
-                    map.put(word, count + 1);
-                }
-                System.out.println(map.size()); // 17188
+        test1Map(new rbTreeMap<>(), words);
+        test1Map(new HashMap<>(), words);
 
-                int count = 0;
-                for (String word : words) {
-                    Integer i = map.get(word);
-                    count += i == null ? 0 : i;
-                    map.remove(word);
-                }
-                Asserts.test(count == words.length);
-                Asserts.test(map.size() == 0);
-            }
-        });
     }
 
     static void test2(HashMap<Object, Integer> map) {
@@ -150,10 +133,10 @@ public class testHashMap {
 
     public static void main(String[] args) {
         test1();
-        test2(new HashMap<>());
-        test3(new HashMap<>());
-        test4(new HashMap<>());
-        test5(new HashMap<>());
+        // test2(new HashMap<>());
+        // test3(new HashMap<>());
+        // test4(new HashMap<>());
+        // test5(new HashMap<>());
 
     }
 

@@ -503,6 +503,7 @@ public class rbTreeMap<K, V> implements Map<K, V> {
 
                 color(sibling, colorOf(parent));
                 black(sibling.right);
+                black(parent);
                 rotateLeft(parent);
             }
         } else { // 被删除的节点在右边，兄弟节点在左边
@@ -533,6 +534,7 @@ public class rbTreeMap<K, V> implements Map<K, V> {
 
                 color(sibling, colorOf(parent));
                 black(sibling.left);
+                black(parent);
                 rotateRight(parent);
             }
         }
