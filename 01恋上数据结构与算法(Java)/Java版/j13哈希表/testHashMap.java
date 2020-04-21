@@ -91,8 +91,8 @@ public class testHashMap {
         map.put("rose", 2);
         map.put("jim", 3);
         map.put("jake", 4);
-        map.remove("jack");
-        map.remove("jim");
+        // map.remove("jack");
+        // map.remove("jim");
         for (int i = 1; i <= 10; i++) {
             map.put("test" + i, i);
             map.put(new Key(i), i);
@@ -103,7 +103,7 @@ public class testHashMap {
         for (int i = 1; i <= 3; i++) {
             map.put(new Key(i), i + 5);
         }
-        Asserts.test(map.size() == 19);
+        Asserts.test(map.size() == 21);
         Asserts.test(map.get(new Key(1)) == 6);
         Asserts.test(map.get(new Key(2)) == 7);
         Asserts.test(map.get(new Key(3)) == 8);
@@ -132,10 +132,10 @@ public class testHashMap {
     }
 
     public static void main(String[] args) {
-        test1();
+        // test1();
         // test2(new HashMap<>());
         // test3(new HashMap<>());
-        // test4(new HashMap<>());
+        test4(new HashMap<>());
         // test5(new HashMap<>());
 
     }
