@@ -4,6 +4,7 @@ import j13哈希表.Times.Task;
 import j13哈希表.file.FileInfo;
 import j13哈希表.file.Files;
 import j13哈希表.map.HashMap;
+import j13哈希表.map.LinkedHashMap;
 import j13哈希表.map.Map;
 import j13哈希表.map.rbTreeMap;
 import j13哈希表.map.Map.Visitor;
@@ -47,6 +48,7 @@ public class testHashMap {
 
         test1Map(new rbTreeMap<>(), words);
         test1Map(new HashMap<>(), words);
+        test1Map(new LinkedHashMap<>(), words);
 
     }
 
@@ -135,8 +137,15 @@ public class testHashMap {
         // test1();
         // test2(new HashMap<>());
         // test3(new HashMap<>());
-        test4(new HashMap<>());
+        // test4(new HashMap<>());
+        test4(new LinkedHashMap<>());
         // test5(new HashMap<>());
+
+        test1();
+        test2(new LinkedHashMap<>());
+        test3(new LinkedHashMap<>());
+        test4(new LinkedHashMap<>());
+        test5(new LinkedHashMap<>());
 
     }
 
