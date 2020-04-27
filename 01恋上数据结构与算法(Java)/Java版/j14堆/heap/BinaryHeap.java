@@ -22,13 +22,32 @@ public class BinaryHeap<E> extends AbstractHeap<E> implements BinaryTreeInfo {
     private E[] elements;
     private static final int DEFAULT_CAPACITY = 10;
 
-    public BinaryHeap(Comparator<E> comparator) {
+    public BinaryHeap(E[] elements, Comparator<E> comparator) {
         super(comparator);
-        this.elements = (E[]) new Object[DEFAULT_CAPACITY];
+
+        if (elements == null || elements.length == 0) {
+            this.elements = (E[]) new Object[DEFAULT_CAPACITY];
+        } else {
+            size = elements.length;
+            int capacity = Math.max(elements.length, DEFAULT_CAPACITY);
+            this.elements = (E[]) new Object[capacity];
+            for (int i = 0; i < elements.length; i++) {
+                this.elements[i] = elements[i];
+            }
+            heapify();
+        }
+    }
+
+    public BinaryHeap(E[] elements) {
+        this(elements, null);
+    }
+
+    public BinaryHeap(Comparator<E> comparator) {
+        this(null, comparator);
     }
 
     public BinaryHeap() {
-        this(null);
+        this(null, null);
     }
 
     @Override
@@ -84,40 +103,18 @@ public class BinaryHeap<E> extends AbstractHeap<E> implements BinaryTreeInfo {
     }
 
     /**
-     * 让index位置的元素上滤
-     * 
-     * @param index
+     * 批量建堆
      */
-    private void siftUp(int index) {
-        // E element = elements[index];
-        // while (index > 0) {
-        // int parentIndex = (index - 1) >> 1; // 父节点的索引
-        // E parentElement = elements[parentIndex];
-        // if (compare(element, parentElement) <= 0)
-        // return;
-
-        // // 交换index、parentIndex位置的内容
-        // E tmp = elements[index];
-        // elements[index] = elements[parentIndex];
-        // elements[parentIndex] = tmp;
-
-        // // 重新赋值index
-        // index = parentIndex;
+    private void heapify() {
+        // 自上而下的上滤:效率较低
+        // for (int i = 1; i < size; i++) {
+        // siftUp(i);
         // }
 
-        E element = elements[index];
-        while (index > 0) {
-            int parentIndex = (index - 1) >> 1; // 父节点的索引
-            E parentElement = elements[parentIndex];
-            if (compare(element, parentElement) <= 0)
-                break;
-            // 将父元素存储在index位置
-            elements[index] = parentElement;
-
-            // 重新赋值index
-            index = parentIndex;
+        // 自下而上的下滤
+        for (int i = (size >> 1) - 1; i >= 0; i--) {
+            siftDown(i);
         }
-        elements[index] = element;
     }
 
     /**
@@ -155,6 +152,43 @@ public class BinaryHeap<E> extends AbstractHeap<E> implements BinaryTreeInfo {
             elements[index] = childElement;
             // 重新设置index
             index = childIndex;
+        }
+        elements[index] = element;
+    }
+
+    /**
+     * 让index位置的元素上滤
+     * 
+     * @param index
+     */
+    private void siftUp(int index) {
+        // E element = elements[index];
+        // while (index > 0) {
+        // int parentIndex = (index - 1) >> 1; // 父节点的索引
+        // E parentElement = elements[parentIndex];
+        // if (compare(element, parentElement) <= 0)
+        // return;
+
+        // // 交换index、parentIndex位置的内容
+        // E tmp = elements[index];
+        // elements[index] = elements[parentIndex];
+        // elements[parentIndex] = tmp;
+
+        // // 重新赋值index
+        // index = parentIndex;
+        // }
+
+        E element = elements[index];
+        while (index > 0) {
+            int parentIndex = (index - 1) >> 1; // 父节点的索引
+            E parentElement = elements[parentIndex];
+            if (compare(element, parentElement) <= 0)
+                break;
+            // 将父元素存储在index位置
+            elements[index] = parentElement;
+
+            // 重新赋值index
+            index = parentIndex;
         }
         elements[index] = element;
     }
