@@ -7,7 +7,7 @@
 
 using namespace std;
 
-int main()
+void testArrayList()
 {
 	// test constructor
 	LinearList<double>* x = new ArrayList<double>(20);
@@ -138,6 +138,4 @@ int main()
     cout << "the reversed list is " << y << endl;
     int suy = accumulate(y.begin(), y.end(), 0);
     cout << "the suy of the elements is " << suy << endl;
-
-	return 0;
 }

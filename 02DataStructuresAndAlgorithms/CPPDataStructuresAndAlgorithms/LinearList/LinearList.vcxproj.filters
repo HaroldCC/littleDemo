@@ -27,9 +27,15 @@
     <ClInclude Include="scr\LinearList.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="scr\VectorList.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="scr\testArrayList.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="scr\testVectorList.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

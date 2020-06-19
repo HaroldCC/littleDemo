@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.jupyter": "jupyter",
+        "stack": "cpp"
+    }
+}
