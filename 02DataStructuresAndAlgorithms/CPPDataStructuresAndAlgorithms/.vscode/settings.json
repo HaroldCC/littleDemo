@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.jupyter": "jupyter",
+        "xstring": "cpp",
+        "iosfwd": "cpp",
+        "xutility": "cpp"
+    }
+}
