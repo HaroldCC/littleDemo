@@ -3,7 +3,7 @@
 > Author          : Harold
 > Mail            : 2106562095@qq.com
 > Github          : www.github.com/Haroldcc
-> Created Time    : 2020Äê06ÔÂ17ÈÕ  17Ê±36·Ö26Ãë
+> Created Time    : 2020å¹´06æœˆ17æ—¥  17æ—¶36åˆ†26ç§’
 ************************************************************************/
 #ifndef LINEARLIST_H
 #define LINEARLIST_H
@@ -11,20 +11,20 @@
 #include <iostream>
 using std::ostream;
 
-/* ÏßĞÔ±íµÄ³éÏóÊı¾İÀàĞÍÉùÃ÷ */
+/* çº¿æ€§è¡¨çš„æŠ½è±¡æ•°æ®ç±»å‹å£°æ˜ */
 template <typename T>
 class LinearList
 {
 private:
 public:
-	virtual ~LinearList() {};
-	virtual bool empty() const = 0;                             // Èô±í¿Õ£¬·µ»Øtrue£¬·ñÔò·µ»Øfalse
-	virtual size_t size() const = 0;                            // ·µ»ØÏßĞÔ±íÖĞÔªËØµÄ¸öÊı
-	virtual T& get(int theIndex) const = 0;                     // ·µ»ØË÷ÒıÎªtheIndexµÄÔªËØÒıÓÃ
-	virtual int index_of(const T& theElement) const = 0;        // ·µ»ØÔªËØtheElementµÚÒ»´Î³öÏÖµÄË÷Òı
-	virtual void erase(int theIndex) = 0;                       // É¾³ıË÷ÒıÎªtheIndexµÄÔªËØ
-	virtual void insert(int theIndex, const T& theElement) = 0; // °ÑtheElement²åÈëÏßĞÔ±íÖĞË÷ÒıÎªtheIndexµÄÎ»ÖÃ
-	virtual void output(ostream& out) const = 0;                // Êä³öÏßĞÔ±íÖĞµÄÄÚÈİ£¨°ÑÏßĞÔ±í²åÈëÊä³öÁ÷out£©
+	virtual ~LinearList(){};
+	virtual bool empty() const = 0;								// è‹¥è¡¨ç©ºï¼Œè¿”å›trueï¼Œå¦åˆ™è¿”å›false
+	virtual size_t size() const = 0;							// è¿”å›çº¿æ€§è¡¨ä¸­å…ƒç´ çš„ä¸ªæ•°
+	virtual T &get(int theIndex) const = 0;						// è¿”å›ç´¢å¼•ä¸ºtheIndexçš„å…ƒç´ å¼•ç”¨
+	virtual int index_of(const T &theElement) const = 0;		// è¿”å›å…ƒç´ theElementç¬¬ä¸€æ¬¡å‡ºç°çš„ç´¢å¼•
+	virtual void erase(int theIndex) = 0;						// åˆ é™¤ç´¢å¼•ä¸ºtheIndexçš„å…ƒç´ 
+	virtual void insert(int theIndex, const T &theElement) = 0; // æŠŠtheElementæ’å…¥çº¿æ€§è¡¨ä¸­ç´¢å¼•ä¸ºtheIndexçš„ä½ç½®
+	virtual void output(ostream &out) const = 0;				// è¾“å‡ºçº¿æ€§è¡¨ä¸­çš„å†…å®¹ï¼ˆæŠŠçº¿æ€§è¡¨æ’å…¥è¾“å‡ºæµoutï¼‰
 };
 
 #endif

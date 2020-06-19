@@ -27,9 +27,9 @@ private:
 	size_t m_capacity; // 数组容量
 	size_t m_size;	   // 数组包含的元素个数
 
-	void check_index(int theIndex) const;					   // 数组索引检查，若索引无效，抛出异常
-	void shrinkage_capacity(int oldCapacity);				   // 数组缩容
-	void expansion_capacity(int oldCapacity, int newCapacity); // 数组扩容
+	void check_index(int theIndex) const;	  // 数组索引检查，若索引无效，抛出异常
+	void shrinkage_capacity(int oldCapacity); // 数组缩容
+	void expansion_capacity(int newCapacity); // 数组扩容
 
 public:
 	//  构造函数、拷贝构造、析构函数
@@ -121,7 +121,7 @@ inline void ArrayList<T>::check_index(int theIndex) const
 }
 
 template <typename T>
-inline void ArrayList<T>::expansion_capacity(int oldCapacity, int newCapacity)
+inline void ArrayList<T>::expansion_capacity(int newCapacity)
 {
 	if (newCapacity < 0)
 		throw illegalParameterValue("new capacity must be >= 0.");
@@ -140,7 +140,7 @@ inline void ArrayList<T>::shrinkage_capacity(int oldCapacity)
 	// 当数组中元素个数小于容量的一半时，进行缩容
 	if (m_size < (oldCapacity / 2))
 		// 此处的实现是调用扩容操作的方法，传递一个较小的新容量(将容量减去一半)
-		expansion_capacity(oldCapacity, oldCapacity >> 1);
+		expansion_capacity(oldCapacity >> 1);
 }
 
 template <typename T>
@@ -234,7 +234,7 @@ inline void ArrayList<T>::insert(int theIndex, const T &theElement)
 	if (m_capacity <= m_size)
 	{
 		// 扩容2倍
-		expansion_capacity(m_capacity, m_capacity << 1);
+		expansion_capacity(m_capacity << 1);
 	}
 
 	for (int i = m_size - 1; i >= theIndex; --i)
