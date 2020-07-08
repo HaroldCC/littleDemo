@@ -97,7 +97,7 @@ int main() {
 	cout << "y is " << y << endl;
 
 	// test iterator
-	cout << "Ouput using forward iterators pre and post ++" << endl;
+	cout << "Output using forward iterators pre and post ++" << endl;
 	for (VectorList<int>::iterator i = y.begin();
 		i != y.end(); i++)
 		cout << *i << "  ";
@@ -107,7 +107,7 @@ int main() {
 		cout << *i << "  ";
 	cout << endl;
 
-	cout << "Ouput using backward iterators pre and post --" << endl;
+	cout << "Output using backward iterators pre and post --" << endl;
 	for (VectorList<int>::iterator i = y.end();
 		i != y.begin(); cout << *(--i) << "  ");
 	cout << endl;
