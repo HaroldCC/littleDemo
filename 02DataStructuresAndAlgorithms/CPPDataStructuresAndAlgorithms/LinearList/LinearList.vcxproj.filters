@@ -24,10 +24,19 @@
     <ClInclude Include="scr\ArrayList.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="scr\VectorList.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="scr\SingleLinkedList.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="scr\SingleLinkedList2.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
     <ClInclude Include="scr\LinearList.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="scr\VectorList.h">
+    <ClInclude Include="scr\DoublyLinkedList.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -36,6 +45,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="scr\testVectorList.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="scr\testSingleLinkedList.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="scr\testDoublyLinkedList.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

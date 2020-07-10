@@ -147,14 +147,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="scr\DoublyLinkedList.h" />
+    <ClInclude Include="scr\LinearList.h" />
+    <ClInclude Include="scr\SingleLinkedList.h" />
     <ClInclude Include="scr\exception.h" />
     <ClInclude Include="scr\ArrayList.h" />
-    <ClInclude Include="scr\LinearList.h" />
     <ClInclude Include="scr\VectorList.h" />
+    <ClInclude Include="scr\SingleLinkedList2.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="scr\testArrayList.cpp" />
     <ClCompile Include="scr\testVectorList.cpp" />
+    <ClCompile Include="scr\testSingleLinkedList.cpp" />
+    <ClCompile Include="scr\testDoublyLinkedList.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

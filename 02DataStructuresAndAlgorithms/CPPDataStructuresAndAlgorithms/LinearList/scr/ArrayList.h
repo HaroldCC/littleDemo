@@ -35,6 +35,13 @@ public:
 	//  构造函数、拷贝构造、析构函数
 	ArrayList(int initialCapacity = 10);
 	ArrayList(const ArrayList<T> &);
+	ArrayList(ArrayList<T>&& theArrayList)noexcept
+		:m_elements(theArrayList.m_elements), m_capacity(theArrayList.m_capacity), m_size(theArrayList.m_size) {
+		theArrayList.m_elements = nullptr;
+		theArrayList.m_capacity = m_size = 0;
+	}
+	ArrayList& operator=(const ArrayList<T>&theArrayList);
+	ArrayList& operator=(ArrayList<T>&& theArrayList)noexcept;
 	~ArrayList() { delete[] m_elements; }
 
 	// ADT
@@ -169,6 +176,40 @@ inline ArrayList<T>::ArrayList(const ArrayList<T> &theArrayList)
 	{
 		m_elements[i] = theArrayList.m_elements[i];
 	}
+}
+
+template <typename T>
+ArrayList<T>& ArrayList<T>::operator=(const ArrayList<T>&theArrayList)
+{
+	if(this != &theArrayList)
+	{
+		delete[]m_elements;
+		m_elements = new T[theArrayList.m_capacity];
+		m_capacity = theArrayList.m_capacity;
+		m_size = theArrayList.m_size;
+
+		for(size_t i = 0; i < m_size;++i)
+		{
+			m_elements[i] = theArrayList.m_elements [i] ;
+		}
+	}
+	return *this;
+}
+
+template <typename T>
+ArrayList<T>& ArrayList<T>::operator=(ArrayList<T>&& theArrayList) noexcept
+{
+	if(this != &theArrayList)
+	{
+		delete[]m_elements;
+		m_elements = theArrayList.m_elements;
+		m_capacity = theArrayList.m_capacity;
+		m_size = theArrayList.m_size;
+
+		theArrayList.m_elements = nullptr;
+		theArrayList.m_capacity = theArrayList.m_size = 0;
+	}
+	return *this;
 }
 
 // ADT

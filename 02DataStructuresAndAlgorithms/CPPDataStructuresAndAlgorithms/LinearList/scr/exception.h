@@ -18,9 +18,9 @@ private:
 
 public:
   illegalParameterValue() : message("Illegal Parameter Value.") {}
-  illegalParameterValue(const std::string theMessage) : message(theMessage) {}
-  void outputMessage() { std::cout << this->message << std::endl; }
-  ~illegalParameterValue() {}
+  illegalParameterValue(const std::string& theMessage) : message(theMessage) {}
+  void outputMessage()const  { std::cout << this->message << std::endl; }
+  ~illegalParameterValue() = default;
 };
 
 class illegalIndex
@@ -30,9 +30,9 @@ private:
 
 public:
   illegalIndex() : message("Illegal Index.") {}
-  illegalIndex(const std::string theMessage) : message(theMessage) {}
-  ~illegalIndex() {}
-  void outputMessage() { std::cout << this->message << std::endl; }
+  illegalIndex(const std::string& theMessage) : message(theMessage) {}
+  ~illegalIndex() = default;
+  void outputMessage() const{ std::cout << this->message << std::endl; }
 };
 
 #endif

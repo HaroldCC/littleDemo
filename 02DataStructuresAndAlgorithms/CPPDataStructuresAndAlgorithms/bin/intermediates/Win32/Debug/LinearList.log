@@ -1,22 +1,3 @@
-﻿  testVectorList.cpp
-D:\studySpace\GitHouse\littleDemo\02DataStructuresAndAlgorithms\CPPDataStructuresAndAlgorithms\LinearList\scr\VectorList.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\studySpace\GitHouse\littleDemo\02DataStructuresAndAlgorithms\CPPDataStructuresAndAlgorithms\LinearList\scr\LinearList.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\studySpace\GitHouse\littleDemo\02DataStructuresAndAlgorithms\CPPDataStructuresAndAlgorithms\LinearList\scr\VectorList.h(125,23): warning C4018: “<”: 有符号/无符号不匹配
-D:\studySpace\GitHouse\littleDemo\02DataStructuresAndAlgorithms\CPPDataStructuresAndAlgorithms\LinearList\scr\VectorList.h(124): message : 在编译 类 模板 成员函数“int VectorList<double>::index_of(const T &) const”时
-          with
-          [
-              T=double
-          ]
-D:\studySpace\GitHouse\littleDemo\02DataStructuresAndAlgorithms\CPPDataStructuresAndAlgorithms\LinearList\scr\testVectorList.cpp(12): message : 查看对正在编译的 类 模板 实例化“VectorList<double>”的引用
-D:\studySpace\GitHouse\littleDemo\02DataStructuresAndAlgorithms\CPPDataStructuresAndAlgorithms\LinearList\scr\VectorList.h(144,34): warning C4018: “>”: 有符号/无符号不匹配
-D:\studySpace\GitHouse\littleDemo\02DataStructuresAndAlgorithms\CPPDataStructuresAndAlgorithms\LinearList\scr\VectorList.h(143): message : 在编译 类 模板 成员函数“void VectorList<double>::insert(int,const T &)”时
-          with
-          [
-              T=double
-          ]
-D:\studySpace\GitHouse\littleDemo\02DataStructuresAndAlgorithms\CPPDataStructuresAndAlgorithms\LinearList\scr\VectorList.h(59,34): warning C4018: “>=”: 有符号/无符号不匹配
-D:\studySpace\GitHouse\littleDemo\02DataStructuresAndAlgorithms\CPPDataStructuresAndAlgorithms\LinearList\scr\VectorList.h(58): message : 在编译 类 模板 成员函数“void VectorList<double>::check_index(int) const”时
-D:\studySpace\GitHouse\littleDemo\02DataStructuresAndAlgorithms\CPPDataStructuresAndAlgorithms\LinearList\scr\VectorList.h(117): message : 查看对正在编译的函数 模板 实例化“void VectorList<double>::check_index(int) const”的引用
-D:\studySpace\GitHouse\littleDemo\02DataStructuresAndAlgorithms\CPPDataStructuresAndAlgorithms\LinearList\scr\VectorList.h(84): message : 在编译 类 模板 成员函数“VectorList<double>::VectorList(int)”时
-D:\studySpace\GitHouse\littleDemo\02DataStructuresAndAlgorithms\CPPDataStructuresAndAlgorithms\LinearList\scr\testVectorList.cpp(12): message : 查看对正在编译的函数 模板 实例化“VectorList<double>::VectorList(int)”的引用
+﻿  testDoublyLinkedList.cpp
+D:\studySpace\GitHouse\littleDemo\02DataStructuresAndAlgorithms\CPPDataStructuresAndAlgorithms\LinearList\scr\DoublyLinkedList.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
   LinearList.vcxproj -> D:\studySpace\GitHouse\littleDemo\02DataStructuresAndAlgorithms\CPPDataStructuresAndAlgorithms\bin\Win32\Debug\LinearList.exe

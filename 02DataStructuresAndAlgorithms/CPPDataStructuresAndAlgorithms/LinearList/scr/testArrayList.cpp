@@ -26,6 +26,7 @@ void testArrayList()
 		<< y.size() << ", "
 		<< z.size() << endl;
 
+
 	// test empty
 	if (x->empty()) cout << "x is empty" << endl;
 	else cout << "x is not empty" << endl;

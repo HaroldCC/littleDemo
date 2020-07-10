@@ -7,7 +7,9 @@
 
 using namespace std;
 
-int main() {
+void testVectorList() {
+
+
 	// test constructor
 	LinearList<double>* x = new VectorList<double>(20);
 	VectorList<int> y(2), z;
@@ -24,6 +26,8 @@ int main() {
 		<< x->size() << ", "
 		<< y.size() << ", "
 		<< z.size() << endl;
+	z = y;
+
 
 	// test empty
 	if (x->empty()) cout << "x is empty" << endl;
@@ -129,5 +133,4 @@ int main() {
 	sort(y.begin(), y.end(), greater<int>());
 	cout << "The list is descending order is " << y << endl;
 
-	return 0;
 }

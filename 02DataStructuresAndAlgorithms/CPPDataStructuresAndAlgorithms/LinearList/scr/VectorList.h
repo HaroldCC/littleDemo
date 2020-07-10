@@ -33,6 +33,7 @@ public:
     // 构造，复制和析构
     VectorList(int initialCapacity = 10);
     VectorList(const VectorList<T> &theVectorList);
+    VectorList& operator=(const VectorList<T>& theVectorList);
     ~VectorList() { delete m_elements; }
 
     // ADT
@@ -97,6 +98,17 @@ template <typename T>
 inline VectorList<T>::VectorList(const VectorList<T> &theVectorList)
 {
     m_elements = new std::vector<T>(*theVectorList.m_elements);
+}
+
+template <typename T>
+VectorList<T>& VectorList<T>::operator=(const VectorList<T>& theVectorList)
+{
+    if(this != &theVectorList)
+    {
+        delete m_elements;
+        m_elements = new std::vector<T>(*theVectorList.m_elements);
+    }
+    return *this;
 }
 
 template <typename T>
