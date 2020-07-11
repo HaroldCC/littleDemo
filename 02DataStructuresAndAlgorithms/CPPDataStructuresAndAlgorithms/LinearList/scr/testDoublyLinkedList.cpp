@@ -13,7 +13,7 @@ using std::endl;
 
 extern void testSingleLinkedList();
 
-int main(int argc, char* argv[])
+void testDoublyLinkedList(int argc, char* argv[])
 {
 	//testSingleLinkedList();
 	

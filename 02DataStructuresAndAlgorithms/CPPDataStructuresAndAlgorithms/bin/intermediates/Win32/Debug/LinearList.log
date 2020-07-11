@@ -1,3 +1,24 @@
-﻿  testDoublyLinkedList.cpp
-D:\studySpace\GitHouse\littleDemo\02DataStructuresAndAlgorithms\CPPDataStructuresAndAlgorithms\LinearList\scr\DoublyLinkedList.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+﻿  testSingleCircularLinkedList.cpp
+D:\studySpace\GitHouse\littleDemo\02DataStructuresAndAlgorithms\CPPDataStructuresAndAlgorithms\LinearList\scr\testSingleCircularLinkedList.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\studySpace\GitHouse\littleDemo\02DataStructuresAndAlgorithms\CPPDataStructuresAndAlgorithms\LinearList\scr\SingleCircularLinkedList.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\studySpace\GitHouse\littleDemo\02DataStructuresAndAlgorithms\CPPDataStructuresAndAlgorithms\LinearList\scr\SingleCircularLinkedList.h(65,2): warning C4018: “<”: 有符号/无符号不匹配
+D:\studySpace\GitHouse\littleDemo\02DataStructuresAndAlgorithms\CPPDataStructuresAndAlgorithms\LinearList\scr\SingleCircularLinkedList.h(62): message : 在编译 类 模板 成员函数“SingleCircularLinkedList<int>::~SingleCircularLinkedList(void)”时
+D:\studySpace\GitHouse\littleDemo\02DataStructuresAndAlgorithms\CPPDataStructuresAndAlgorithms\LinearList\scr\testSingleCircularLinkedList.cpp(16): message : 查看对正在编译的函数 模板 实例化“SingleCircularLinkedList<int>::~SingleCircularLinkedList(void)”的引用
+D:\studySpace\GitHouse\littleDemo\02DataStructuresAndAlgorithms\CPPDataStructuresAndAlgorithms\LinearList\scr\testSingleCircularLinkedList.cpp(16): message : 查看对正在编译的 类 模板 实例化“SingleCircularLinkedList<int>”的引用
+D:\studySpace\GitHouse\littleDemo\02DataStructuresAndAlgorithms\CPPDataStructuresAndAlgorithms\LinearList\scr\SingleCircularLinkedList.h(271,31): warning C4018: “>”: 有符号/无符号不匹配
+D:\studySpace\GitHouse\littleDemo\02DataStructuresAndAlgorithms\CPPDataStructuresAndAlgorithms\LinearList\scr\SingleCircularLinkedList.h(269): message : 在编译 类 模板 成员函数“void SingleCircularLinkedList<int>::insert(int,const T &)”时
+          with
+          [
+              T=int
+          ]
+D:\studySpace\GitHouse\littleDemo\02DataStructuresAndAlgorithms\CPPDataStructuresAndAlgorithms\LinearList\scr\testSingleCircularLinkedList.cpp(20): message : 查看对正在编译的函数 模板 实例化“void SingleCircularLinkedList<int>::insert(int,const T &)”的引用
+          with
+          [
+              T=int
+          ]
+D:\studySpace\GitHouse\littleDemo\02DataStructuresAndAlgorithms\CPPDataStructuresAndAlgorithms\LinearList\scr\SingleCircularLinkedList.h(304,31): warning C4018: “>”: 有符号/无符号不匹配
+D:\studySpace\GitHouse\littleDemo\02DataStructuresAndAlgorithms\CPPDataStructuresAndAlgorithms\LinearList\scr\SingleCircularLinkedList.h(303): message : 在编译 类 模板 成员函数“void SingleCircularLinkedList<int>::check_index(int) const”时
+D:\studySpace\GitHouse\littleDemo\02DataStructuresAndAlgorithms\CPPDataStructuresAndAlgorithms\LinearList\scr\SingleCircularLinkedList.h(209): message : 查看对正在编译的函数 模板 实例化“void SingleCircularLinkedList<int>::check_index(int) const”的引用
+D:\studySpace\GitHouse\littleDemo\02DataStructuresAndAlgorithms\CPPDataStructuresAndAlgorithms\LinearList\scr\SingleCircularLinkedList.h(157): message : 在编译 类 模板 成员函数“SingleCircularLinkedList<int>::SingleCircularLinkedList(const SingleCircularLinkedList<int> &)”时
+D:\studySpace\GitHouse\littleDemo\02DataStructuresAndAlgorithms\CPPDataStructuresAndAlgorithms\LinearList\scr\testSingleCircularLinkedList.cpp(26): message : 查看对正在编译的函数 模板 实例化“SingleCircularLinkedList<int>::SingleCircularLinkedList(const SingleCircularLinkedList<int> &)”的引用
   LinearList.vcxproj -> D:\studySpace\GitHouse\littleDemo\02DataStructuresAndAlgorithms\CPPDataStructuresAndAlgorithms\bin\Win32\Debug\LinearList.exe

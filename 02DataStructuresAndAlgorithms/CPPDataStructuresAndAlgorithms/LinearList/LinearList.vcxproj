@@ -154,12 +154,14 @@
     <ClInclude Include="scr\ArrayList.h" />
     <ClInclude Include="scr\VectorList.h" />
     <ClInclude Include="scr\SingleLinkedList2.h" />
+    <ClInclude Include="scr\SingleCircularLinkedList.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="scr\testArrayList.cpp" />
     <ClCompile Include="scr\testVectorList.cpp" />
     <ClCompile Include="scr\testSingleLinkedList.cpp" />
     <ClCompile Include="scr\testDoublyLinkedList.cpp" />
+    <ClCompile Include="scr\testSingleCircularLinkedList.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
