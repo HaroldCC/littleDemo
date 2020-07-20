@@ -14,25 +14,52 @@
 class illegalParameterValue
 {
 private:
-  std::string message;
+	std::string message;
 
 public:
-  illegalParameterValue() : message("Illegal Parameter Value.") {}
-  illegalParameterValue(const std::string& theMessage) : message(theMessage) {}
-  void outputMessage()const  { std::cout << this->message << std::endl; }
-  ~illegalParameterValue() = default;
+	illegalParameterValue() : message("Illegal Parameter Value.") {}
+	illegalParameterValue(const std::string& theMessage) : message(theMessage) {}
+	void outputMessage()const { std::cout << this->message << std::endl; }
+	~illegalParameterValue() = default;
 };
 
 class illegalIndex
 {
 private:
-  std::string message;
+	std::string message;
 
 public:
-  illegalIndex() : message("Illegal Index.") {}
-  illegalIndex(const std::string& theMessage) : message(theMessage) {}
-  ~illegalIndex() = default;
-  void outputMessage() const{ std::cout << this->message << std::endl; }
+	illegalIndex() : message("Illegal Index.") {}
+	illegalIndex(const std::string& theMessage) : message(theMessage) {}
+	~illegalIndex() = default;
+	void outputMessage() const { std::cout << this->message << std::endl; }
+};
+
+class stackEmpty
+{
+public:
+	stackEmpty(std::string theMessage =
+		"Invalid operation on empty stack")
+	{
+		message = theMessage;
+	}
+	void outputMessage() const { std::cout << message << std::endl; }
+private:
+	std::string message;
+};
+
+// queue is empty
+class queueEmpty
+{
+public:
+	queueEmpty(std::string theMessage =
+		"Invalid operation on empty queue")
+	{
+		message = theMessage;
+	}
+	void outputMessage()const { std::cout << message << std::endl; }
+private:
+	std::string message;
 };
 
 #endif

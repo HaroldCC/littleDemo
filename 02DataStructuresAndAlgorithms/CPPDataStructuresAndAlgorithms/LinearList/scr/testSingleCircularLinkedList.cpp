@@ -10,7 +10,7 @@ using std::cout;
 using std::endl;
 #include "SingleCircularLinkedList.h"
 
-int main()
+void testSingleCircularLinkedList()
 {
 	// 默认构造
 	SingleCircularLinkedList<int> list1;
@@ -34,7 +34,13 @@ int main()
 		<< " list[4] = " << list3.index_of(4) << " " << list3.index_of(0) << endl;
 
 	// 赋值运算符
-	SingleCircularLinkedList<int> list4 = list3;
+	SingleCircularLinkedList<int> list4;
+	list4 = list3;
+
+	SingleCircularLinkedList<int> a;
+	SingleCircularLinkedList<int>b;
+	a = b;
+	
 	// get()
 	cout << "list4[0] = " << list4.get(0) << " list4[4] = " << list4.get(list4.size() - 1);
 	cout << "list4[2] = " << list4.get(2);
@@ -42,10 +48,11 @@ int main()
 	// 移动赋值运算符
 	SingleCircularLinkedList<int> list5 = std::move(list4);
 	// empty() and erase()
-	cout << std::boolalpha << list5.empty() << std::noboolalpha;
+	cout << std::boolalpha << list5.empty() << std::noboolalpha << endl;
 	list5.erase(0);
 	list5.erase(list5.size() - 1);
 	list5.erase(1);
 	cout << list5.size() << " " << list5 << endl;
-
+	list5.erase(0);
+	cout << list5 << endl;
 }

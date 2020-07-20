@@ -42,8 +42,6 @@ class SingleCircularLinkedList : public LinearList<T>
 		return out;
 	}
 
-	friend void swap(const SingleCircularLinkedList<T>& lhs, const SingleCircularLinkedList<T>& rhs);
-
 public:
 	SingleCircularLinkedList(int initialCapacity = 10);
 	SingleCircularLinkedList(const SingleCircularLinkedList<T>& theList);
@@ -62,7 +60,7 @@ public:
 	{
 		if (!empty())
 		{
-			for (int i = 0; i < size(); ++i)
+			for (int i = 0; i < static_cast<int>(size()); ++i)
 			{
 				ListNode<T>* nextNode = m_firstNode->m_next;
 				delete m_firstNode;
@@ -131,14 +129,6 @@ protected:
 };
 
 template <typename T>
-void swap(const SingleCircularLinkedList<T>& lhs, const SingleCircularLinkedList<T>& rhs)
-{
-	using std::swap;
-	swap(lhs.m_firstNode, rhs.m_firstNode);
-	swap(lhs.m_listSize, rhs.m_listSize);
-}
-
-template <typename T>
 SingleCircularLinkedList<T>::SingleCircularLinkedList(int initialCapacity)
 {
 	if (initialCapacity < 1)
@@ -183,7 +173,26 @@ SingleCircularLinkedList<T>& SingleCircularLinkedList<T>::operator=(const Single
 	{
 		delete m_firstNode;
 
-		swap(*this, theList);
+		m_listSize = theList.m_listSize;
+
+		if (m_listSize == 0)
+		{
+			m_firstNode = nullptr;
+		}
+		else
+		{
+			ListNode<T>* sourceNode = theList.m_firstNode;
+			m_firstNode = new ListNode<T>(sourceNode->m_element);
+			sourceNode = sourceNode->m_next;
+			ListNode<T>* targetNode = m_firstNode;
+			while (sourceNode != theList.m_firstNode)
+			{
+				targetNode->m_next = new ListNode<T>(sourceNode->m_element);
+				targetNode = targetNode->m_next;
+				sourceNode = sourceNode->m_next;
+			}
+			targetNode->m_next = m_firstNode;
+		}
 	}
 	return *this;
 }
@@ -209,10 +218,7 @@ T& SingleCircularLinkedList<T>::get(int theIndex) const
 	check_index(theIndex);
 
 	ListNode<T>* currentNode = m_firstNode;
-	for (int i = 0; i != theIndex; ++i)
-	{
-		currentNode = currentNode->m_next;
-	}
+	for (int i = 0; i != theIndex; ++i) { currentNode = currentNode->m_next; }
 	return currentNode->m_element;
 }
 
@@ -223,7 +229,7 @@ int SingleCircularLinkedList<T>::index_of(const T& theElement) const
 	for (int i = 0; i != m_listSize; ++i)
 	{
 		if (currentNode->m_element == theElement)
-			return  i;
+			return i;
 		currentNode = currentNode->m_next;
 	}
 
@@ -315,7 +321,7 @@ void SingleCircularLinkedList<T>::output(ostream& out) const
 	ListNode<T>* currentNode = m_firstNode;
 	for (int i = 0; i != m_listSize; ++i)
 	{
-		out << currentNode->m_element << " ";
+		out << currentNode->m_element << "_" << currentNode->m_next->m_element << " ";
 		currentNode = currentNode->m_next;
 	}
 }

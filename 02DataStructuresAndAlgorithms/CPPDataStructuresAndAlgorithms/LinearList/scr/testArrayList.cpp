@@ -19,13 +19,11 @@ void testArrayList()
 		<< y.capacity() << ", "
 		<< z.capacity() << endl;
 
-
 	// test size
 	cout << "Initial size of x, y, and z = "
 		<< x->size() << ", "
 		<< y.size() << ", "
 		<< z.size() << endl;
-
 
 	// test empty
 	if (x->empty()) cout << "x is empty" << endl;
@@ -91,6 +89,12 @@ void testArrayList()
 	cout << "w is " << w << endl;
 	cout << "y is " << y << endl;
 
+	// test¸³ÖµÔËËã·û
+	ArrayList<int> a;
+	a = w;
+	a = a;
+	cout << a << endl;
+
 	// a few more inserts, just for fun
 	y.insert(0, 4);
 	y.insert(0, 5);
@@ -98,45 +102,45 @@ void testArrayList()
 	y.insert(0, 7);
 	cout << "y is " << y << endl;
 	y.clear();
-	
-    // create a linear list
+
+	// create a linear list
    //! ArrayList<int> y(2);
-    y.insert(0, 2);
-    y.insert(1, 6);
-    y.insert(0, 1);
-    y.insert(2, 4);
-    y.insert(3, 5);
-    y.insert(2, 3);
-    cout << "inserted 6 integers, list y should be 1 2 3 4 5 6" << endl;
-    cout << "size of y = " << y.size() << endl;
-    cout << "capacity of y = " << y.capacity() << endl;
+	y.insert(0, 2);
+	y.insert(1, 6);
+	y.insert(0, 1);
+	y.insert(2, 4);
+	y.insert(3, 5);
+	y.insert(2, 3);
+	cout << "inserted 6 integers, list y should be 1 2 3 4 5 6" << endl;
+	cout << "size of y = " << y.size() << endl;
+	cout << "capacity of y = " << y.capacity() << endl;
 
-    // test iterator
-    cout << "output using forward iterators prev and post ++" << endl;
-    for (ArrayList<int>::iterator i = y.begin();
-        i != y.end(); i++)
-        cout << *i << "  ";
-    cout << endl;
-    for (ArrayList<int>::iterator i = y.begin();
-        i != y.end(); ++i)
-        cout << *i << "  ";
-    cout << endl;
+	// test iterator
+	cout << "output using forward iterators prev and post ++" << endl;
+	for (ArrayList<int>::iterator i = y.begin();
+		i != y.end(); i++)
+		cout << *i << "  ";
+	cout << endl;
+	for (ArrayList<int>::iterator i = y.begin();
+		i != y.end(); ++i)
+		cout << *i << "  ";
+	cout << endl;
 
-    cout << "output using backward iterators prev and post --" << endl;
-    for (ArrayList<int>::iterator i = y.end();
-        i != y.begin(); cout << *(--i) << "  ");
-    cout << endl;
-    for (ArrayList<int>::iterator i = y.end();
-        i != y.begin();)
-    {
-        i--; cout << *i << "  "; *i += 1;
-    }
-    cout << endl;
-    cout << "incremented by 1 list is " << y << endl;
+	cout << "output using backward iterators prev and post --" << endl;
+	for (ArrayList<int>::iterator i = y.end();
+		i != y.begin(); cout << *(--i) << "  ");
+	cout << endl;
+	for (ArrayList<int>::iterator i = y.end();
+		i != y.begin();)
+	{
+		i--; cout << *i << "  "; *i += 1;
+	}
+	cout << endl;
+	cout << "incremented by 1 list is " << y << endl;
 
-    // try out sore stl algorithms
-    reverse(y.begin(), y.end());
-    cout << "the reversed list is " << y << endl;
-    int suy = accumulate(y.begin(), y.end(), 0);
-    cout << "the suy of the elements is " << suy << endl;
+	// try out sore stl algorithms
+	reverse(y.begin(), y.end());
+	cout << "the reversed list is " << y << endl;
+	int suy = accumulate(y.begin(), y.end(), 0);
+	cout << "the suy of the elements is " << suy << endl;
 }

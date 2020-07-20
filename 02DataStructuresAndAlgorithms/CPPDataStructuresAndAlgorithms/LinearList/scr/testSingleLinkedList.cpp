@@ -30,11 +30,11 @@ void testSingleLinkedList()
 	// test iterator
 	cout << "Output using forward iterators pre and post ++" << endl;
 	for (SingleLinkedList<int>::iterator i = y.begin();
-		 i != y.end(); i++)
+		i != y.end(); i++)
 		cout << *i << "  ";
 	cout << endl;
 	for (SingleLinkedList<int>::iterator i = y.begin();
-		 i != y.end(); ++i)
+		i != y.end(); ++i)
 	{
 		cout << *i << "  ";
 		*i += 1;
@@ -51,9 +51,15 @@ void testSingleLinkedList()
 	SingleLinkedList<int> z(y);
 	cout << z << endl;
 
+	// 测试赋值运算符
+	SingleLinkedList<int> a;
+	a = z;
+	SingleLinkedList<int> b;
+	SingleLinkedList<int> c;
+	b = c;
+
 	SingleLinkedList<int> m = z;
 	cout << m << endl;
-
 }
 
 void testExtendSingleLinkedList()
@@ -72,11 +78,11 @@ void testExtendSingleLinkedList()
 	// test iterator
 	cout << "Ouput using forward iterators pre and post ++" << endl;
 	for (extendSingleLinkedList<int>::iterator i = y.begin();
-		 i != y.end(); i++)
+		i != y.end(); i++)
 		cout << *i << "  ";
 	cout << endl;
 	for (extendSingleLinkedList<int>::iterator i = y.begin();
-		 i != y.end(); ++i)
+		i != y.end(); ++i)
 	{
 		cout << *i << "  ";
 		*i += 1;
@@ -115,14 +121,13 @@ void testExtendSingleLinkedList()
 	extendSingleLinkedList<int> z = y;
 	cout << "z : " << z << endl;
 
-		extendSingleLinkedList<int>h(std::move(z));
+	extendSingleLinkedList<int>h(std::move(z));
 	cout << "move: " << h << endl;
 
 	cout << h.get(0) << endl;
 	cout << h.index_of(8) << endl;
 
-
-	cout <<"y = "<<  y << endl;
+	cout << "y = " << y << endl;
 	cout << "get(y):" << y.get(1) << endl;
 	cout << y.get(0) << endl;
 	cout << y.get(y.size() - 1) << endl;

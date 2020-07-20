@@ -13,18 +13,26 @@ using std::endl;
 
 extern void testSingleLinkedList();
 
-void testDoublyLinkedList(int argc, char* argv[])
+void testDoublyLinkedList()
 {
 	//testSingleLinkedList();
-	
+
 	DoublyLinkedList<int> list1;
 	cout << "默认构造：" << list1 << endl;
+
 
 	list1.push_back(2);
 	list1.insert(0, 1);
 	list1.insert(2, 3);
 	list1.insert(2, 4);
 	cout << list1 << endl;
+
+	// 赋值运算符
+	DoublyLinkedList<int> a;
+	a = list1;
+	cout << list1 << endl;
+	cout << a << endl;
+
 	DoublyLinkedList<int> list2(list1);
 	cout << list2 << endl;
 	cout << "list1 = " << list1 << "\n" << "list2 = " << list2 << endl;

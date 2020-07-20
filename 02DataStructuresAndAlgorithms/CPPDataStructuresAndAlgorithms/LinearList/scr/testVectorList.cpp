@@ -8,8 +8,6 @@
 using namespace std;
 
 void testVectorList() {
-
-
 	// test constructor
 	LinearList<double>* x = new VectorList<double>(20);
 	VectorList<int> y(2), z;
@@ -20,14 +18,12 @@ void testVectorList() {
 		<< y.capacity() << ", "
 		<< z.capacity() << endl;
 
-
 	// test size
 	cout << "Initial size of x, y, and z = "
 		<< x->size() << ", "
 		<< y.size() << ", "
 		<< z.size() << endl;
 	z = y;
-
 
 	// test empty
 	if (x->empty()) cout << "x is empty" << endl;
@@ -132,5 +128,4 @@ void testVectorList() {
 	cout << "The sorted list is " << y << endl;
 	sort(y.begin(), y.end(), greater<int>());
 	cout << "The list is descending order is " << y << endl;
-
 }

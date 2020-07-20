@@ -22,8 +22,8 @@ class ArrayList : public LinearList<T>
 public:
 	const int ELEMENT_NOT_FOUND = -1;
 
-private:
-	T *m_elements;	   // 存储线性表的一维数组
+protected:
+	T* m_elements;	   // 存储线性表的一维数组
 	size_t m_capacity; // 数组容量
 	size_t m_size;	   // 数组包含的元素个数
 
@@ -34,24 +34,24 @@ private:
 public:
 	//  构造函数、拷贝构造、析构函数
 	ArrayList(int initialCapacity = 10);
-	ArrayList(const ArrayList<T> &);
+	ArrayList(const ArrayList<T>&);
 	ArrayList(ArrayList<T>&& theArrayList)noexcept
 		:m_elements(theArrayList.m_elements), m_capacity(theArrayList.m_capacity), m_size(theArrayList.m_size) {
 		theArrayList.m_elements = nullptr;
 		theArrayList.m_capacity = m_size = 0;
 	}
-	ArrayList& operator=(const ArrayList<T>&theArrayList);
+	ArrayList& operator=(const ArrayList<T>& theArrayList);
 	ArrayList& operator=(ArrayList<T>&& theArrayList)noexcept;
 	~ArrayList() { delete[] m_elements; }
 
 	// ADT
 	bool empty() const;								// 若表空，返回true，否则返回false
 	size_t size() const;							// 返回线性表中元素的个数
-	T &get(int theIndex) const;						// 返回索引为theIndex的元素引用
-	int index_of(const T &theElement) const;		// 返回元素theElement第一次出现的索引
+	T& get(int theIndex) const;						// 返回索引为theIndex的元素引用
+	int index_of(const T& theElement) const;		// 返回元素theElement第一次出现的索引
 	void erase(int theIndex);						// 删除索引为theIndex的元素
-	void insert(int theIndex, const T &theElement); // 把theElement插入线性表中索引为theIndex的位置
-	void output(ostream &out) const;				// 输出线性表中的内容（把线性表插入输出流out）
+	void insert(int theIndex, const T& theElement); // 把theElement插入线性表中索引为theIndex的位置
+	void output(ostream& out) const;				// 输出线性表中的内容（把线性表插入输出流out）
 
 	// 其它方法
 	size_t capacity() const;
@@ -66,25 +66,25 @@ public:
 	class iterator
 	{
 	private:
-		T *position; // 指向表元素的指针
+		T* position; // 指向表元素的指针
 
 	public:
 		// 用C++的typedef实现双向迭代器
 		typedef std::bidirectional_iterator_tag iterator_category;
 		typedef T value_type;
 		typedef std::ptrdiff_t difference_type;
-		typedef T *pointer;
-		typedef T &reference;
+		typedef T* pointer;
+		typedef T& reference;
 
 		// 构造
-		iterator(T *thePosition = 0) { this->position = thePosition; }
+		iterator(T* thePosition = 0) { this->position = thePosition; }
 
 		// 解引用操作符
-		T &operator*() const { return *(this->position); }
-		T *operator->() const { return &*(this->position); }
+		T& operator*() const { return *(this->position); }
+		T* operator->() const { return &*(this->position); }
 
 		// 迭代器递增
-		iterator &operator++()
+		iterator& operator++()
 		{
 			++this->position;
 			return *this;
@@ -97,7 +97,7 @@ public:
 		} // 后加
 
 		// 迭代器递减
-		iterator &operator--()
+		iterator& operator--()
 		{
 			--this->position;
 			return *this;
@@ -133,7 +133,7 @@ inline void ArrayList<T>::expansion_capacity(int newCapacity)
 	if (newCapacity < 0)
 		throw illegalParameterValue("new capacity must be >= 0.");
 
-	T *temp = new T[newCapacity];
+	T* temp = new T[newCapacity];
 	m_capacity = newCapacity;
 	for (int i = 0; i < m_size; ++i)
 		temp[i] = m_elements[i];
@@ -165,7 +165,7 @@ inline ArrayList<T>::ArrayList(int initialCapacity)
 }
 
 template <typename T>
-inline ArrayList<T>::ArrayList(const ArrayList<T> &theArrayList)
+inline ArrayList<T>::ArrayList(const ArrayList<T>& theArrayList)
 {
 	m_elements = new T[theArrayList.m_capacity];
 	m_capacity = theArrayList.m_capacity;
@@ -179,18 +179,19 @@ inline ArrayList<T>::ArrayList(const ArrayList<T> &theArrayList)
 }
 
 template <typename T>
-ArrayList<T>& ArrayList<T>::operator=(const ArrayList<T>&theArrayList)
+ArrayList<T>& ArrayList<T>::operator=(const ArrayList<T>& theArrayList)
 {
-	if(this != &theArrayList)
+	if (this != &theArrayList)
 	{
 		delete[]m_elements;
+
 		m_elements = new T[theArrayList.m_capacity];
 		m_capacity = theArrayList.m_capacity;
 		m_size = theArrayList.m_size;
 
-		for(size_t i = 0; i < m_size;++i)
+		for (size_t i = 0; i < m_size; ++i)
 		{
-			m_elements[i] = theArrayList.m_elements [i] ;
+			m_elements[i] = theArrayList.m_elements[i];
 		}
 	}
 	return *this;
@@ -199,7 +200,7 @@ ArrayList<T>& ArrayList<T>::operator=(const ArrayList<T>&theArrayList)
 template <typename T>
 ArrayList<T>& ArrayList<T>::operator=(ArrayList<T>&& theArrayList) noexcept
 {
-	if(this != &theArrayList)
+	if (this != &theArrayList)
 	{
 		delete[]m_elements;
 		m_elements = theArrayList.m_elements;
@@ -226,14 +227,14 @@ inline size_t ArrayList<T>::size() const
 }
 
 template <typename T>
-inline T &ArrayList<T>::get(int theIndex) const
+inline T& ArrayList<T>::get(int theIndex) const
 {
 	check_index(theIndex);
 	return m_elements[theIndex];
 }
 
 template <typename T>
-inline int ArrayList<T>::index_of(const T &theElement) const
+inline int ArrayList<T>::index_of(const T& theElement) const
 {
 	for (int index = 0; index < m_size; ++index)
 	{
@@ -261,7 +262,7 @@ inline void ArrayList<T>::erase(int theIndex)
 }
 
 template <typename T>
-inline void ArrayList<T>::insert(int theIndex, const T &theElement)
+inline void ArrayList<T>::insert(int theIndex, const T& theElement)
 {
 	// 由于此时的索引值可以是数组的size，
 	// 即表明向数组最后一个位置插入元素，之前的check_index方法已经不再适用
@@ -288,7 +289,7 @@ inline void ArrayList<T>::insert(int theIndex, const T &theElement)
 }
 
 template <typename T>
-inline void ArrayList<T>::output(ostream &out) const
+inline void ArrayList<T>::output(ostream& out) const
 {
 	for (size_t i = 0; i < m_size; ++i)
 		out << m_elements[i] << " ";
@@ -302,7 +303,7 @@ inline size_t ArrayList<T>::capacity() const
 }
 
 template <typename T>
-std::ostream &operator<<(std::ostream &out, const ArrayList<T> &theArrayList)
+std::ostream& operator<<(std::ostream& out, const ArrayList<T>& theArrayList)
 {
 	theArrayList.output(out);
 	return out;

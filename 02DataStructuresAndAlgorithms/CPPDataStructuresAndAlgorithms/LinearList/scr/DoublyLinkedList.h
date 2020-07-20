@@ -19,7 +19,7 @@ template <typename T>
 class DoublyLinkedList : public extendedLinearList<T>
 {
 	friend std::ostream&
-	operator<<(std::ostream& out, const DoublyLinkedList<T>& theList)
+		operator<<(std::ostream& out, const DoublyLinkedList<T>& theList)
 	{
 		theList.output(out);
 		return out;
@@ -39,7 +39,7 @@ private:
 		ListNode(const Ty& element) : _prev(nullptr), _element(element), _next(nullptr) {}
 
 		ListNode(ListNode<Ty>* prev, const Ty& element, ListNode<Ty>* next) : _prev(prev), _element(element),
-		                                                                      _next(next) {}
+			_next(next) {}
 	};
 
 public:
@@ -96,15 +96,6 @@ private:
 };
 
 template <typename T>
-void swap(const DoublyLinkedList<T>& lhs, const DoublyLinkedList<T>& rhs)
-{
-	using std::swap;
-	swap(lhs.m_listSize, rhs.m_listSize);
-	swap(lhs.m_firstNode, rhs.m_lastNode);
-	swap(lhs.m_lastNode, rhs.m_lastNode);
-}
-
-template <typename T>
 DoublyLinkedList<T>::DoublyLinkedList(const DoublyLinkedList<T>& theList)
 {
 	if (theList.m_firstNode == nullptr)
@@ -135,7 +126,25 @@ DoublyLinkedList<T>& DoublyLinkedList<T>::operator=(const DoublyLinkedList<T>& t
 	{
 		this->clear();
 
-		swap(*this, theList);
+			if (theList.m_firstNode == nullptr)
+	{
+		m_listSize = 0;
+		m_firstNode = m_lastNode = nullptr;
+	}
+	else
+	{
+		m_listSize = theList.m_listSize;
+		m_firstNode = new ListNode<T>(theList.m_firstNode->_element);
+		ListNode<T>* sourceNode = theList.m_firstNode->_next;
+		ListNode<T>* targetNode = m_firstNode;
+		while (sourceNode != nullptr)
+		{
+			targetNode->_next = new ListNode<T>(targetNode, sourceNode->_element, targetNode->_next);
+			targetNode = targetNode->_next;
+			sourceNode = sourceNode->_next;
+		}
+		m_lastNode = targetNode;
+	}
 	}
 	return *this;
 }
@@ -264,11 +273,11 @@ template <typename T>
 void DoublyLinkedList<T>::clear()
 {
 	ListNode<T>* deleteNode = m_firstNode;
-	while(deleteNode != nullptr)
+	while (deleteNode != nullptr)
 	{
 		ListNode<T>* nextNode = deleteNode->_next;
 		delete deleteNode;
-		deleteNode= nextNode;
+		deleteNode = nextNode;
 	}
 	m_firstNode = m_lastNode = nullptr;
 	m_listSize = 0;
