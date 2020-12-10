@@ -5,8 +5,9 @@
 > Github          : www.github.com/Haroldcc
 > Created Time    : 2020年07月12日  08时53分43秒
 ************************************************************************/
-#include "DoublyCircularLinkedList.h"
 #include <iostream>
+
+#include "include/DoublyCircularLinkedList.h"
 using std::cout;
 using std::endl;
 
@@ -17,11 +18,6 @@ extern void testSingleLinkedList();
 
 void testDoublyCircularLinkedList()
 {
-	//	testArrayList();
-	//testDoublyLinkedList();
-	//testSingleCircularLinkedList();
-	testSingleLinkedList();
-
 	// 默认构造
 	DoublyCircularLinkedList<int> list1;
 	DoublyCircularLinkedList<int> b;

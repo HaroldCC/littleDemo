@@ -1,0 +1,10 @@
+/02DataStructuresAndAlgorithms/CPPDataStructuresAndAlgorithms/CPPDataStructuresAndAlgorithms.sln
+/02DataStructuresAndAlgorithms/CPPDataStructuresAndAlgorithms/Matrix/*.filters
+/02DataStructuresAndAlgorithms/CPPDataStructuresAndAlgorithms/Matrix/*.user
+/02DataStructuresAndAlgorithms/CPPDataStructuresAndAlgorithms/Matrix/*.vcxproj
+/02DataStructuresAndAlgorithms/CPPDataStructuresAndAlgorithms/LinearList/*.filters
+/02DataStructuresAndAlgorithms/CPPDataStructuresAndAlgorithms/LinearList/*.user
+/02DataStructuresAndAlgorithms/CPPDataStructuresAndAlgorithms/LinearList/*.cd
+/02DataStructuresAndAlgorithms/CPPDataStructuresAndAlgorithms/LinearList/*.vcxproj
+bin
+.vscode

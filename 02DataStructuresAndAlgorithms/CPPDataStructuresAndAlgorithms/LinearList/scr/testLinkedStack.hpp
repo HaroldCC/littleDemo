@@ -1,10 +1,20 @@
+/*************************************************************************
+> File Name       : testLinkedStack.cpp
+> Author          : Harold
+> Mail            : 2106562095@qq.com
+> Github          : www.github.com/Haroldcc
+> Created Time    : 2020年07月15日  16时05分11秒
+************************************************************************/
 #include <iostream>
-#include "ArrayStack.h"
+
+#include "include/LinkedStack.h"
 
 using std::cout;
 using std::endl;
-void testArrayStack() {
-	ArrayStack<int> s;
+
+void testLinkedStack()
+{
+	LinkedStack<int> s;
 
 	// add a few elements
 	s.push(1);
@@ -29,10 +39,15 @@ void testArrayStack() {
 		cout << "Popped top element" << endl;
 	}
 
-	try { s.pop(); }
+	try
+	{
+		s.pop();
+	}
 	catch (stackEmpty message)
 	{
 		cout << "Last pop failed " << endl;
 		message.outputMessage();
 	}
+
+	system("pause");
 }

@@ -1,8 +1,8 @@
-#include"ArrayQueue.h"
+﻿#include "include/ArrayQueue.h"
 using std::cout;
 using std::endl;
 
-int main()
+void testArrayQueue()
 {
 	ArrayQueue<int> q(4);
 

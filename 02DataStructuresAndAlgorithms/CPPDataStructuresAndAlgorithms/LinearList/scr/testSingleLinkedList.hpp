@@ -7,8 +7,8 @@
 ************************************************************************/
 #include <iostream>
 #include <numeric> // has accumulate
-#include "LinearList.h"
-#include "SingleLinkedList2.h"
+#include "include/SingleLinkedList.h"
+#include "include/SingleLinkedList2.h"
 
 using namespace std;
 

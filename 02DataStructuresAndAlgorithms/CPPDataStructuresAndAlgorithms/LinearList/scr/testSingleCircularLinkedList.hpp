@@ -6,9 +6,10 @@
 > Created Time    : 2020年07月11日  14时14分35秒
 ************************************************************************/
 #include <iostream>
+
+#include "include/SingleCircularLinkedList.h"
 using std::cout;
 using std::endl;
-#include "SingleCircularLinkedList.h"
 
 void testSingleCircularLinkedList()
 {
@@ -40,7 +41,7 @@ void testSingleCircularLinkedList()
 	SingleCircularLinkedList<int> a;
 	SingleCircularLinkedList<int>b;
 	a = b;
-	
+
 	// get()
 	cout << "list4[0] = " << list4.get(0) << " list4[4] = " << list4.get(list4.size() - 1);
 	cout << "list4[2] = " << list4.get(2);

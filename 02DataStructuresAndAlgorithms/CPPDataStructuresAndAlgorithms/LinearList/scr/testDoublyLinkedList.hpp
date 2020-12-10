@@ -1,13 +1,14 @@
-/*************************************************************************
+ï»¿/*************************************************************************
 > File Name       : testDoublyLinkedList.cpp
 > Author          : Harold
 > Mail            : 2106562095@qq.com
 > Github          : www.github.com/Haroldcc
-> Created Time    : 2020Äê07ÔÂ10ÈÕ  16Ê±15·Ö58Ãë
+> Created Time    : 2020å¹´07æœˆ10æ—¥  16æ—¶15åˆ†58ç§’
 ************************************************************************/
 
-#include "DoublyLinkedList.h"
 #include <iostream>
+
+#include "include/DoublyLinkedList.h"
 using std::cout;
 using std::endl;
 
@@ -18,8 +19,7 @@ void testDoublyLinkedList()
 	//testSingleLinkedList();
 
 	DoublyLinkedList<int> list1;
-	cout << "Ä¬ÈÏ¹¹Ôì£º" << list1 << endl;
-
+	cout << "é»˜è®¤æž„é€ ï¼š" << list1 << endl;
 
 	list1.push_back(2);
 	list1.insert(0, 1);
@@ -27,7 +27,7 @@ void testDoublyLinkedList()
 	list1.insert(2, 4);
 	cout << list1 << endl;
 
-	// ¸³ÖµÔËËã·û
+	// èµ‹å€¼è¿ç®—ç¬¦
 	DoublyLinkedList<int> a;
 	a = list1;
 	cout << list1 << endl;

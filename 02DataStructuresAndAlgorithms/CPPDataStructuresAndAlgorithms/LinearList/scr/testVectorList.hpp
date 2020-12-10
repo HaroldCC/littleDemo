@@ -1,9 +1,8 @@
-#include"VectorList.h"
-#include<iostream>
-#include"exception.h"
-#include"LinearList.h"
+﻿#include<iostream>
 #include<algorithm>
 #include<numeric>
+
+#include "include/VectorList.h"
 
 using namespace std;
 

@@ -1,9 +1,9 @@
-// test the iterator for ArrayList
+ï»¿// test the iterator for ArrayList
 #include<iostream>
 #include<algorithm>   // has reverse
 #include<numeric>     // has accumulate
-#include "ArrayList.h"
-#include"LinearList.h"
+#include "include/ArrayList.h"
+#include"include/LinearList.h"
 
 using namespace std;
 
@@ -89,7 +89,7 @@ void testArrayList()
 	cout << "w is " << w << endl;
 	cout << "y is " << y << endl;
 
-	// test¸³ÖµÔËËã·û
+	// testèµ‹å€¼è¿ç®—ç¬¦
 	ArrayList<int> a;
 	a = w;
 	a = a;
