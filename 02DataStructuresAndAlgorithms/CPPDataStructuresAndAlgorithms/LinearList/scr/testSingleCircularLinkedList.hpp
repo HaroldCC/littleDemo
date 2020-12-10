@@ -1,10 +1,11 @@
-/*************************************************************************
+﻿/*************************************************************************
 > File Name       : testSingleCircularLinkedList.cpp
 > Author          : Harold
 > Mail            : 2106562095@qq.com
 > Github          : www.github.com/Haroldcc
 > Created Time    : 2020年07月11日  14时14分35秒
 ************************************************************************/
+#pragma once
 #include <iostream>
 
 #include "include/SingleCircularLinkedList.h"

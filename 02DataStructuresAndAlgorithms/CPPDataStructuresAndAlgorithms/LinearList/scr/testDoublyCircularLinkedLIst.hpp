@@ -1,10 +1,11 @@
-/*************************************************************************
+﻿/*************************************************************************
 > File Name       : testDoublyCircularLinkedLIst.cpp
 > Author          : Harold
 > Mail            : 2106562095@qq.com
 > Github          : www.github.com/Haroldcc
 > Created Time    : 2020年07月12日  08时53分43秒
 ************************************************************************/
+#pragma once
 #include <iostream>
 
 #include "include/DoublyCircularLinkedList.h"

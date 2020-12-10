@@ -1,10 +1,12 @@
-/*************************************************************************
+﻿/*************************************************************************
 > File Name       : testSingleLinkedList.cpp
 > Author          : Harold
 > Mail            : 2106562095@qq.com
 > Github          : www.github.com/Haroldcc
 > Created Time    : 2020年07月08日  17时00分06秒
 ************************************************************************/
+#pragma once
+
 #include <iostream>
 #include <numeric> // has accumulate
 #include "include/SingleLinkedList.h"
@@ -30,7 +32,7 @@ void testSingleLinkedList()
 	// test iterator
 	cout << "Output using forward iterators pre and post ++" << endl;
 	for (SingleLinkedList<int>::iterator i = y.begin();
-		i != y.end(); i++)
+		i != y.end(); ++i)
 		cout << *i << "  ";
 	cout << endl;
 	for (SingleLinkedList<int>::iterator i = y.begin();
@@ -78,7 +80,7 @@ void testExtendSingleLinkedList()
 	// test iterator
 	cout << "Ouput using forward iterators pre and post ++" << endl;
 	for (extendSingleLinkedList<int>::iterator i = y.begin();
-		i != y.end(); i++)
+		i != y.end(); ++i)
 		cout << *i << "  ";
 	cout << endl;
 	for (extendSingleLinkedList<int>::iterator i = y.begin();
@@ -121,7 +123,7 @@ void testExtendSingleLinkedList()
 	extendSingleLinkedList<int> z = y;
 	cout << "z : " << z << endl;
 
-	extendSingleLinkedList<int>h(std::move(z));
+	extendSingleLinkedList<int> h(std::move(z));
 	cout << "move: " << h << endl;
 
 	cout << h.get(0) << endl;
@@ -132,10 +134,10 @@ void testExtendSingleLinkedList()
 	cout << y.get(0) << endl;
 	cout << y.get(y.size() - 1) << endl;
 
-	cout << "index_of : \n" << y.index_of(0) << endl;
+	cout << "index_of : \n"
+		<< y.index_of(0) << endl;
 	cout << y.index_of(1) << endl;
 	cout << y.index_of(6) << endl;
-	y.erase(0); cout << y << endl;
-
-	system("pause");
+	y.erase(0);
+	cout << y << endl;
 }

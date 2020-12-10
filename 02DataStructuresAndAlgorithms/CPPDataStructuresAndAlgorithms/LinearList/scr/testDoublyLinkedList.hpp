@@ -6,6 +6,7 @@
 > Created Time    : 2020年07月10日  16时15分58秒
 ************************************************************************/
 
+#pragma once
 #include <iostream>
 
 #include "include/DoublyLinkedList.h"

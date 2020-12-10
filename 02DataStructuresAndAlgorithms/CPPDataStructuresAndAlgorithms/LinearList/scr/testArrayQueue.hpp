@@ -1,4 +1,5 @@
-﻿#include "include/ArrayQueue.h"
+﻿#pragma once
+#include "include/ArrayQueue.h"
 using std::cout;
 using std::endl;
 

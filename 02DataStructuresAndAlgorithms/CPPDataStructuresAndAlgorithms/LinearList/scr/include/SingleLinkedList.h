@@ -1,4 +1,4 @@
-/*************************************************************************
+﻿/*************************************************************************
 > File Name       :SingleLinkedList.h
 > Author          : Harold
 > Mail            : 2106562095@qq.com
@@ -15,30 +15,31 @@
 #include <sstream>
 #include "exception.h"
 
-/**
- * @brief 锟斤拷锟斤拷锟节碉拷
- *
- * @tparam T
- */
-template <typename T>
+	/**
+	 * @brief 锟斤拷锟斤拷锟节碉拷
+	 *
+	 * @param T
+	 */
+template <typename Type>
 struct ListNode
 {
 	// 锟斤拷锟捷筹拷员
-	T m_element;
-	ListNode<T>* m_next;
+	Type m_element;
+	ListNode<Type>* m_next;
 
 	// 锟斤拷锟斤拷
 	ListNode() : m_next(nullptr) { }
 
-	ListNode(const T& element) : m_element(element), m_next(nullptr) { }
+	ListNode(const Type& element) : m_element(element), m_next(nullptr) { }
 
-	ListNode(const T& element, ListNode<T>* next)
+	ListNode(const Type& element, ListNode<Type>* next)
 		: m_element(element), m_next(next) { }
 };
 
 template <typename T>
 class SingleLinkedList : public LinearList<T>
 {
+
 	friend std::ostream& operator<<(std::ostream& out, const SingleLinkedList<T>& theList)
 	{
 		theList.output(out);

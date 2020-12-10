@@ -1,4 +1,5 @@
-﻿#include <iostream>
+﻿#pragma once
+#include <iostream>
 #include "include/ArrayStack.h"
 
 using std::cout;

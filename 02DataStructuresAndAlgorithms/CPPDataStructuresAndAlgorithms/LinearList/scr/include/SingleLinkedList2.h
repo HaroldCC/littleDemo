@@ -1,4 +1,4 @@
-/*************************************************************************
+﻿/*************************************************************************
 > File Name       : SingleLinkedList2.h
 > Author          : Harold
 > Mail            : 2106562095@qq.com
@@ -67,6 +67,7 @@ public:
 private:
 	void output(ostream& out) const override { SingleLinkedList<T>::output(out); }
 
+private:
 	ListNode<T>* m_lastNode; // 链表最后一个节点的指针
 };
 

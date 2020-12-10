@@ -1,4 +1,4 @@
-/*************************************************************************
+﻿/*************************************************************************
 > File Name       : SingleCircularLinkedList.h
 > Author          : Harold
 > Mail            : 2106562095@qq.com
@@ -14,25 +14,6 @@
 #include <sstream>
 #include "exception.h"
 
-/**
- * @brief 链表节点
- *
- * @tparam T
- */
-template <typename T>
-struct ListNode
-{
-	T m_element;
-	ListNode<T>* m_next;
-
-	ListNode() : m_next(nullptr) { }
-
-	ListNode(const T& element) : m_element(element), m_next(nullptr) { }
-
-	ListNode(const T& element, ListNode<T>* next)
-		: m_element(element), m_next(next) { }
-};
-
 template <typename T>
 class SingleCircularLinkedList : public LinearList<T>
 {
@@ -42,6 +23,25 @@ class SingleCircularLinkedList : public LinearList<T>
 		return out;
 	}
 
+protected:
+	/**
+	 * @brief 链表节点
+	 *
+	 * @tparam T
+	 */
+	template <typename Type>
+	struct ListNode
+	{
+		Type m_element;
+		ListNode<Type>* m_next;
+
+		ListNode() : m_next(nullptr) { }
+
+		ListNode(const Type& element) : m_element(element), m_next(nullptr) { }
+
+		ListNode(const Type& element, ListNode<Type>* next)
+			: m_element(element), m_next(next) { }
+	};
 public:
 	SingleCircularLinkedList(int initialCapacity = 10);
 	SingleCircularLinkedList(const SingleCircularLinkedList<T>& theList);

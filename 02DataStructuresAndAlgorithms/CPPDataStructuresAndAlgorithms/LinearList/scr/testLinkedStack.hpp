@@ -5,6 +5,7 @@
 > Github          : www.github.com/Haroldcc
 > Created Time    : 2020年07月15日  16时05分11秒
 ************************************************************************/
+#pragma once
 #include <iostream>
 
 #include "include/LinkedStack.h"
@@ -48,6 +49,4 @@ void testLinkedStack()
 		cout << "Last pop failed " << endl;
 		message.outputMessage();
 	}
-
-	system("pause");
 }

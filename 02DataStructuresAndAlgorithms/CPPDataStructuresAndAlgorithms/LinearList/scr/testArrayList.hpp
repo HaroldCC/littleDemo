@@ -1,9 +1,9 @@
-﻿// test the iterator for ArrayList
+﻿#pragma once
+// test the iterator for ArrayList
 #include<iostream>
 #include<algorithm>   // has reverse
 #include<numeric>     // has accumulate
 #include "include/ArrayList.h"
-#include"include/LinearList.h"
 
 using namespace std;
 

@@ -1,9 +1,9 @@
-/*************************************************************************
+ï»¿/*************************************************************************
 > File Name       : ArrayList.h
 > Author          : Harold
 > Mail            : 2106562095@qq.com
 > Github          : www.github.com/Haroldcc
-> Created Time    : 2020Äê06ÔÂ17ÈÕ  18Ê±43·Ö54Ãë
+> Created Time    : 2020å¹´06æœˆ17æ—¥  18æ—¶43åˆ†54ç§’
 ************************************************************************/
 #ifndef ARRAYLIST_H
 #define ARRAYLIST_H
@@ -15,7 +15,7 @@
 #include <string>
 #include <iterator>
 
-/* ¶¯Ì¬Êı×éµÄ·º»¯ÊµÏÖ */
+/* åŠ¨æ€æ•°ç»„çš„æ³›åŒ–å®ç° */
 template <typename T>
 class ArrayList : public LinearList<T>
 {
@@ -23,16 +23,16 @@ public:
 	const int ELEMENT_NOT_FOUND = -1;
 
 protected:
-	T* m_elements;	   // ´æ´¢ÏßĞÔ±íµÄÒ»Î¬Êı×é
-	size_t m_capacity; // Êı×éÈİÁ¿
-	size_t m_size;	   // Êı×é°üº¬µÄÔªËØ¸öÊı
+	T* m_elements;	   // å­˜å‚¨çº¿æ€§è¡¨çš„ä¸€ç»´æ•°ç»„
+	size_t m_capacity; // æ•°ç»„å®¹é‡
+	size_t m_size;	   // æ•°ç»„åŒ…å«çš„å…ƒç´ ä¸ªæ•°
 
-	void check_index(int theIndex) const;	  // Êı×éË÷Òı¼ì²é£¬ÈôË÷ÒıÎŞĞ§£¬Å×³öÒì³£
-	void shrinkage_capacity(int oldCapacity); // Êı×éËõÈİ
-	void expansion_capacity(int newCapacity); // Êı×éÀ©Èİ
+	void check_index(int theIndex) const;	  // æ•°ç»„ç´¢å¼•æ£€æŸ¥ï¼Œè‹¥ç´¢å¼•æ— æ•ˆï¼ŒæŠ›å‡ºå¼‚å¸¸
+	void shrinkage_capacity(int oldCapacity); // æ•°ç»„ç¼©å®¹
+	void expansion_capacity(int newCapacity); // æ•°ç»„æ‰©å®¹
 
 public:
-	//  ¹¹Ôìº¯Êı¡¢¿½±´¹¹Ôì¡¢Îö¹¹º¯Êı
+	//  æ„é€ å‡½æ•°ã€æ‹·è´æ„é€ ã€ææ„å‡½æ•°
 	ArrayList(int initialCapacity = 10);
 	ArrayList(const ArrayList<T>&);
 	ArrayList(ArrayList<T>&& theArrayList)noexcept
@@ -45,81 +45,81 @@ public:
 	~ArrayList() { delete[] m_elements; }
 
 	// ADT
-	bool empty() const;								// Èô±í¿Õ£¬·µ»Øtrue£¬·ñÔò·µ»Øfalse
-	size_t size() const;							// ·µ»ØÏßĞÔ±íÖĞÔªËØµÄ¸öÊı
-	T& get(int theIndex) const;						// ·µ»ØË÷ÒıÎªtheIndexµÄÔªËØÒıÓÃ
-	int index_of(const T& theElement) const;		// ·µ»ØÔªËØtheElementµÚÒ»´Î³öÏÖµÄË÷Òı
-	void erase(int theIndex);						// É¾³ıË÷ÒıÎªtheIndexµÄÔªËØ
-	void insert(int theIndex, const T& theElement); // °ÑtheElement²åÈëÏßĞÔ±íÖĞË÷ÒıÎªtheIndexµÄÎ»ÖÃ
-	void output(ostream& out) const;				// Êä³öÏßĞÔ±íÖĞµÄÄÚÈİ£¨°ÑÏßĞÔ±í²åÈëÊä³öÁ÷out£©
+	bool empty() const;								// è‹¥è¡¨ç©ºï¼Œè¿”å›trueï¼Œå¦åˆ™è¿”å›false
+	size_t size() const;							// è¿”å›çº¿æ€§è¡¨ä¸­å…ƒç´ çš„ä¸ªæ•°
+	T& get(int theIndex) const;						// è¿”å›ç´¢å¼•ä¸ºtheIndexçš„å…ƒç´ å¼•ç”¨
+	int index_of(const T& theElement) const;		// è¿”å›å…ƒç´ theElementç¬¬ä¸€æ¬¡å‡ºç°çš„ç´¢å¼•
+	void erase(int theIndex);						// åˆ é™¤ç´¢å¼•ä¸ºtheIndexçš„å…ƒç´ 
+	void insert(int theIndex, const T& theElement); // æŠŠtheElementæ’å…¥çº¿æ€§è¡¨ä¸­ç´¢å¼•ä¸ºtheIndexçš„ä½ç½®
+	void output(ostream& out) const;				// è¾“å‡ºçº¿æ€§è¡¨ä¸­çš„å†…å®¹ï¼ˆæŠŠçº¿æ€§è¡¨æ’å…¥è¾“å‡ºæµoutï¼‰
 
-	// ÆäËü·½·¨
+	// å…¶å®ƒæ–¹æ³•
 	size_t capacity() const;
 	void clear() { m_size = 0; }
 
-	//ArrayListµÄÊ×ÔªËØºÍÎ²ºóµü´úÆ÷
+	//ArrayListçš„é¦–å…ƒç´ å’Œå°¾åè¿­ä»£å™¨
 	class iterator;
 	iterator begin() { return iterator(m_elements); }
 	iterator end() { return iterator(m_elements + m_size); }
 
-	// ArrayListµÄµü´úÆ÷¶¨Òå
+	// ArrayListçš„è¿­ä»£å™¨å®šä¹‰
 	class iterator
 	{
 	private:
-		T* position; // Ö¸Ïò±íÔªËØµÄÖ¸Õë
+		T* position; // æŒ‡å‘è¡¨å…ƒç´ çš„æŒ‡é’ˆ
 
 	public:
-		// ÓÃC++µÄtypedefÊµÏÖË«Ïòµü´úÆ÷
+		// ç”¨C++çš„typedefå®ç°åŒå‘è¿­ä»£å™¨
 		typedef std::bidirectional_iterator_tag iterator_category;
 		typedef T value_type;
 		typedef std::ptrdiff_t difference_type;
 		typedef T* pointer;
 		typedef T& reference;
 
-		// ¹¹Ôì
+		// æ„é€ 
 		iterator(T* thePosition = 0) { this->position = thePosition; }
 
-		// ½âÒıÓÃ²Ù×÷·û
+		// è§£å¼•ç”¨æ“ä½œç¬¦
 		T& operator*() const { return *(this->position); }
 		T* operator->() const { return &*(this->position); }
 
-		// µü´úÆ÷µİÔö
+		// è¿­ä»£å™¨é€’å¢
 		iterator& operator++()
 		{
 			++this->position;
 			return *this;
-		} // Ç°¼Ó
+		} // å‰åŠ 
 		iterator operator++(int)
 		{
 			iterator oldValue = *this;
 			++this->position;
 			return oldValue;
-		} // ºó¼Ó
+		} // ååŠ 
 
-		// µü´úÆ÷µİ¼õ
+		// è¿­ä»£å™¨é€’å‡
 		iterator& operator--()
 		{
 			--this->position;
 			return *this;
-		} // Ç°¼õ
+		} // å‰å‡
 		iterator operator--(int)
 		{
 			iterator oldValue = *this;
 			--this->position;
 			return oldValue;
-		} // ºó¼õ
+		} // åå‡
 
-		// ÊÇ·ñÏàµÈ
+		// æ˜¯å¦ç›¸ç­‰
 		bool operator==(const iterator right) const { return this->position == right.position; }
 		bool operator!=(const iterator right) const { return this->position != right.position; }
 	};
 };
 
-// Ë½ÓĞ·½·¨
+// ç§æœ‰æ–¹æ³•
 template <typename T>
 inline void ArrayList<T>::check_index(int theIndex) const
 {
-	if (theIndex < 0 || theIndex >= m_size)
+	if (theIndex < 0 || theIndex >= static_cast<int>(m_size))
 	{
 		std::ostringstream exceptionMessage;
 		exceptionMessage << "index = " << theIndex << " size = " << m_size;
@@ -135,18 +135,18 @@ inline void ArrayList<T>::expansion_capacity(int newCapacity)
 
 	T* temp = new T[newCapacity];
 	m_capacity = newCapacity;
-	for (int i = 0; i < m_size; ++i)
+	for (int i = 0; i < static_cast<int>(m_size); ++i)
 		temp[i] = m_elements[i];
-	delete[] m_elements; // ÊÍ·ÅÀÏÊı×éµÄ¿Õ¼ä
-	m_elements = temp;	 // ÈÃÀÏÊı×éµÄÍ·Ö¸ÕëÖ¸ÏòÀ©ÈİºóµÄÊı×é
+	delete[] m_elements; // é‡Šæ”¾è€æ•°ç»„çš„ç©ºé—´
+	m_elements = temp;	 // è®©è€æ•°ç»„çš„å¤´æŒ‡é’ˆæŒ‡å‘æ‰©å®¹åçš„æ•°ç»„
 }
 
 template <typename T>
 inline void ArrayList<T>::shrinkage_capacity(int oldCapacity)
 {
-	// µ±Êı×éÖĞÔªËØ¸öÊıĞ¡ÓÚÈİÁ¿µÄÒ»°ëÊ±£¬½øĞĞËõÈİ
-	if (m_size < (oldCapacity / 2))
-		// ´Ë´¦µÄÊµÏÖÊÇµ÷ÓÃÀ©Èİ²Ù×÷µÄ·½·¨£¬´«µİÒ»¸ö½ÏĞ¡µÄĞÂÈİÁ¿(½«ÈİÁ¿¼õÈ¥Ò»°ë)
+	// å½“æ•°ç»„ä¸­å…ƒç´ ä¸ªæ•°å°äºå®¹é‡çš„ä¸€åŠæ—¶ï¼Œè¿›è¡Œç¼©å®¹
+	if (static_cast<int>(m_size) < (oldCapacity / 2))
+		// æ­¤å¤„çš„å®ç°æ˜¯è°ƒç”¨æ‰©å®¹æ“ä½œçš„æ–¹æ³•ï¼Œä¼ é€’ä¸€ä¸ªè¾ƒå°çš„æ–°å®¹é‡(å°†å®¹é‡å‡å»ä¸€åŠ)
 		expansion_capacity(oldCapacity >> 1);
 }
 
@@ -171,7 +171,7 @@ inline ArrayList<T>::ArrayList(const ArrayList<T>& theArrayList)
 	m_capacity = theArrayList.m_capacity;
 	m_size = theArrayList.m_size;
 
-	// ½«theArrayListÖĞµÄÔªËØÖğÒ»¸³¸øArrayList
+	// å°†theArrayListä¸­çš„å…ƒç´ é€ä¸€èµ‹ç»™ArrayList
 	for (size_t i = 0; i < m_size; ++i)
 	{
 		m_elements[i] = theArrayList.m_elements[i];
@@ -236,7 +236,7 @@ inline T& ArrayList<T>::get(int theIndex) const
 template <typename T>
 inline int ArrayList<T>::index_of(const T& theElement) const
 {
-	for (int index = 0; index < m_size; ++index)
+	for (int index = 0; index < static_cast<int>(m_size); ++index)
 	{
 		if (theElement == m_elements[index])
 			return index;
@@ -249,13 +249,13 @@ inline void ArrayList<T>::erase(int theIndex)
 {
 	check_index(theIndex);
 
-	// Ê¹ÓÃtheIndexË÷Òı´¦µÄºóÒ»¸öÔªËØ¸²¸ÇtheIndex´¦µÄÔªËØ
-	for (int i = theIndex + 1; i < m_size; ++i)
+	// ä½¿ç”¨theIndexç´¢å¼•å¤„çš„åä¸€ä¸ªå…ƒç´ è¦†ç›–theIndexå¤„çš„å…ƒç´ 
+	for (int i = theIndex + 1; i < static_cast<int>(m_size); ++i)
 	{
 		m_elements[i - 1] = m_elements[i];
 	}
 
-	// Êı×ésize¼õÒ»£¬²¢µ÷ÓÃÒ»´ÎTµÄÎö¹¹º¯Êı
+	// æ•°ç»„sizeå‡ä¸€ï¼Œå¹¶è°ƒç”¨ä¸€æ¬¡Tçš„ææ„å‡½æ•°
 	m_elements[--m_size].~T();
 
 	shrinkage_capacity(m_capacity);
@@ -264,8 +264,8 @@ inline void ArrayList<T>::erase(int theIndex)
 template <typename T>
 inline void ArrayList<T>::insert(int theIndex, const T& theElement)
 {
-	// ÓÉÓÚ´ËÊ±µÄË÷ÒıÖµ¿ÉÒÔÊÇÊı×éµÄsize£¬
-	// ¼´±íÃ÷ÏòÊı×é×îºóÒ»¸öÎ»ÖÃ²åÈëÔªËØ£¬Ö®Ç°µÄcheck_index·½·¨ÒÑ¾­²»ÔÙÊÊÓÃ
+	// ç”±äºæ­¤æ—¶çš„ç´¢å¼•å€¼å¯ä»¥æ˜¯æ•°ç»„çš„sizeï¼Œ
+	// å³è¡¨æ˜å‘æ•°ç»„æœ€åä¸€ä¸ªä½ç½®æ’å…¥å…ƒç´ ï¼Œä¹‹å‰çš„check_indexæ–¹æ³•å·²ç»ä¸å†é€‚ç”¨
 	if (theIndex < 0 || theIndex > m_size)
 	{
 		std::ostringstream exceptionMessage;
@@ -275,7 +275,7 @@ inline void ArrayList<T>::insert(int theIndex, const T& theElement)
 
 	if (m_capacity <= m_size)
 	{
-		// À©Èİ2±¶
+		// æ‰©å®¹2å€
 		expansion_capacity(m_capacity << 1);
 	}
 
@@ -295,7 +295,7 @@ inline void ArrayList<T>::output(ostream& out) const
 		out << m_elements[i] << " ";
 }
 
-// ÆäËü
+// å…¶å®ƒ
 template <typename T>
 inline size_t ArrayList<T>::capacity() const
 {
